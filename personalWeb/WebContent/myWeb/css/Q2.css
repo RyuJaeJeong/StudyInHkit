@@ -1,0 +1,172 @@
+.contents_box {
+    width: 80%;
+    height: inherit;
+    background-color: #ff000040;
+    margin: 0 auto;
+}
+
+#logo {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    margin: 0px 20px 0px 0px;
+
+}
+
+.logo_img {
+    width: 100px;
+    height: 100px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/*ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+
+#header {
+    height: 100px;
+    background-color: aqua;
+}
+
+#header>.contents_box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+
+
+#main-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#main-menu >nav>ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --background-color: gray;
+}
+
+#main-menu >nav>ul li {
+    margin: 0px 20px;
+}
+
+#search-form {
+    padding: 0px 20px;
+}
+
+#member-menu {
+    height: inherit;
+}
+
+#member-menu>nav:nth-child(1)>ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#member-menu>nav:nth-child(1)>ul li {
+    margin: 0px 15px;
+}
+
+#member-menu>nav:nth-child(2)>ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#member-menu>nav:nth-child(2)>ul li {
+    margin: 0px 15px;
+}
+
+
+#body {
+    height: 350px;
+    background-color:aquamarine;
+}
+
+#body>.contents_box {
+    display: flex;
+}
+
+#body_nav {
+   --background-color: blue;
+   width: 70%;
+   margin: 0 auto;
+}
+
+#body_nav h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 30px 0px 0px 0px;
+}
+
+#body_nav>nav>ul li {
+    margin:0px 20px;
+}
+
+
+
+
+#aside {
+    width: 20%;
+    height: inherit;
+    background-color: blanchedalmond;
+}
+
+#main {
+    width: 80%;
+    height: inherit;
+    background-color: burlywood;
+    
+}
+
+#main>section>section table {
+    --background-color: red;
+   margin: auto;
+   padding: 10px;
+}
+
+#main>section>section h1 {
+    text-align: center;
+}
+
+
+#footer {
+    height: 100px;
+    background-color: bisque;
+    margin:0 auto ;
+}
+
+#footer>.contents_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --background-color: blueviolet;
+}
+
+#owner_info>dl {
+    display:flex;
+}
+
+#owner_info>dl>dt {
+    display: flex;
+    padding: 0px 10px 0px 0px;
+}
+
+#owner_info>dl>dd {
+    display: flex;
+    padding: 0px 10px 0px 0px;
+}
+
+
+
+#copyright_info {
+    margin: 5px 0px 0px 0px;
+}

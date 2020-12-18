@@ -1,15 +1,17 @@
+<%@page import="model.member.MemberDAOImplMaria"%>
+<%@page import="model.member.MemberDTO"%>
+<%@page import="model.member.MemberDAO"%>
 <%@page import="java.sql.Timestamp"%>
-<%@page import="java.sql.Date"%>
-<%@page import="jspInterface_member02.jspInterface_member02DTO"%>
-<%@page import="jspInterface_member02.jspInterface_member02DAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%	request.setCharacterEncoding("UTF-8"); %>
+
+
 <%
 String no_ = request.getParameter("no");
 int no = Integer.parseInt(no_);
-jspInterface_member02DAO dao = new jspInterface_member02DAO();
-jspInterface_member02DTO dto =  dao.getSelectOne(no); 
+MemberDAO dao = new MemberDAOImplMaria();
+MemberDTO dto =  dao.getSelectOne(no); 
 
 String id = dto.getId();
 String passwd = dto.getPasswd();

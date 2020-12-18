@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="./css/Q2.css">
+        <link rel="stylesheet" type="text/css" href="./css/reset.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <header id="header">
+            <div class="contents_box">
+                <section id="logo">
+                    <h1>
+                        <img src="./image/top_logo.jpg" class="logo_img">
+                    </h1>
+                </section>
+                <section id="main-menu">
+                    <h1 class="hidden">머릿말</h1>
+                    <nav>
+                        <h1 class="hidden">메인메뉴</h1>
+                        <ul>
+                            <li>주인장소개</li>
+                            <li>주인장연혁</li>
+                            <li>주인동동향</li>
+                        </ul>
+                    </nav>
+                    <section id="search-form">
+                        <h1 class="hidden">검색폼</h1>
+                        <form>
+                            <fieldset>
+                                <legend class="hidden">검색어 입력필드</legend>
+                                <label class="hidden">검색어</label>
+                                <input type="text" name="something">
+                                <input type="submit" value="검색">
+                            </fieldset>
+                        </form>
+                    </section>
+
+                    <div id="member-menu">
+                        <nav>
+                            <h1 class="hidden">회원메뉴</h1>
+                            <ul>
+                                <li>Home</li>
+                                <li>로그인</li>
+                                <li>회원가입</li>
+                            </ul>
+                        </nav>
+                        <nav>
+                            <h1 class="hidden">바로가기메뉴</h1>
+                            <ul>
+                                <li>마이페이지</li>
+                                <li>게시판</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </section>
+            </div>
+        </header>
+
+        <div id="body">
+            <div class="contents_box">
+                <aside id="aside">
+                    <section id="body_nav">
+                        <h1 class="hidden">고객센터</h1>
+                        <nav>
+                            <h1>고객센터메뉴</h1>
+                            <ul>
+                                <li>공지사항</li>
+                                <li>자주하는질문</li>
+                                <li>1:1문의</li>
+                                <li>이벤트</li>
+                            </ul>
+                        </nav>
+                        <nav>
+                            <h1>연관업체</h1>
+                            <ul>
+                                <li>연관업체1</li>
+                                <li>연관업체2</li>
+                                <li>연관업체3</li>
+                            </ul>
+                        </nav>
+                    </section>
+                </aside>
+                <main id="main">
+                    <section>
+                        <h1 class="hidden">>>공지사항</h1>
+                        <section>
+                            <h1 id="title">
+                                회원가입
+                            </h1>
+                            <form name="frm2" method="post" action="02Proc.jsp">
+                                <table border="1" style="border: solid black;">
+                                    <tr>
+                                        <td>아이디</td>
+                                        <td>
+                                            <input type="text" name="id2" value="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>비밀번호</td>
+                                        <td>
+                                            <input type="password" name="wd2" value="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>비밀번호 재확인</td>
+                                        <td>
+                                            <input type="password" name="wd3" value="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>이름</td>
+                                        <td>
+                                            <input type="text" name="nme" value="">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>주소</td>
+                                        <td>
+                                            <input type="text" name="add" value="">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>생년월일</td>
+                                        <td>
+                                            <input style="width:50px; text-align:right;" type="text" name="year" value="">
+                                            <select name="name">"month"
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                            </select>
+                                            <input style="width:50px; text-align:right;" type="text" name="day" value="">
+                                        </td>
+                                        <tr>
+                                            <td>성별</td>
+                                            <td>
+                                                <input type="radio" name="gender" value="남자">남
+                                                <input type="radio" name="gender" value="여자">여
+                                                <!--여러개 중에 하나 선택할 때-->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>본인확인 이메일</td>
+                                            <td>
+                                                <input type="text" name="email" value="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>휴대전화</td>
+                                            <td>
+                                                <select name="nation" style="width: 180px;">
+                                                    <option value="대한민국 +82">대한민국 +82</option>
+                                                    <option value="독일 +49">독일 +49</option>
+                                                    <option value="동티모르+670">동티모르+670</option>
+                                                    <option value="라오스 +456">라오스 +456</option>
+                                                    <option value="레바논 +961">레바논 +961</option>
+                                                    <option value="룩셈부르크 +352">룩셈부르크 +352</option>
+                                                    <option value="리비아 +218">리비아 +218</option>
+                                                    <option value="멕시코 +52">멕시코 +52</option>
+                                                    <option value="미국/캐나다 +1">미국/캐나다 +1</option>
+                                                    <option value="영국 +44">영국 +44</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="left">
+                                                <input
+                                                    type="text"
+                                                    name="phone"
+                                                    value=""
+                                                    placeholder="전화번호 입력"
+                                                    style="color: gray; width:200px;">
+                                                <button type="button">인증번호받기</button>
+                                            </td>
+                                        </tr>
+                                        <tr >
+                                            <td colspan="2" align="left">
+                                                <input
+                                                    type="text"
+                                                    name="phonecheck"
+                                                    value=""
+                                                    placeholder="인증번호를 입력하세요"
+                                                    style="color: gray; width: 300px;">
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="2" align="center">
+                                                <input type="button" value="가입하기" onclick="login()">
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </section>
+                            </form>
+                        </section>
+
+                    </div>
+                </div>
+
+                <footer id="footer">
+                    <div class="contents_box">
+                        <section>
+                            <h1>
+                                <img src="./image/99256C4D5EE030431E.jpg" class="logo_img">
+                            </h1>
+                        </section>
+                        <div>
+                            <section id="owner_info">
+                                <h1 class="hidden">소유권정보</h1>
+                                <dl>
+                                    <dt>주소:</dt>
+                                    <dd>경기도 성남시 대왕판교로 111</dd>
+                                    <dt>관리자메일 :</dt>
+                                    <dd>hong@hong.com</dd>
+                                </dl>
+                                <dl>
+                                    <dt>사업자등록번호 :</dt>
+                                    <dd>111-22-33333</dd>
+                                    <dt>통신판매업신고 :</dt>
+                                    <dd>신고제 1111-경기성남-1111호</dd>
+                                </dl>
+                                <dl>
+                                    <dt>상호 :</dt>
+                                    <dd>홍길동사</dd>
+                                    <dt>대표 :</dt>
+                                    <dd>홍길동</dd>
+                                    <dt>전화번호 :</dt>
+                                    <dd>010-1111-1111</dd>
+                                </dl>
+                            </section>
+
+                            <section id="copyright_info">
+                                <h1 class="hidden">저작권정보</h1>
+                                <div>Copyright c hong.com 2012-2014 All Right Reserved. Contact hong@hong.com</div>
+                            </section>
+                        </div>
+                    </div>
+                </footer>
+
+            </body>
+        </html>
+
+        <script>
+            function login() {
+                if (document.frm2.id2.value == '') {
+                    alert('아이디를 입력하세요');
+                    document.frm2.id2.focus();
+                    return false;
+                }
+                if (document.frm2.wd2.value == '') {
+                    alert('비밀번호를 입력하세요');
+                    document.frm2.wd2.focus();
+                    return false;
+                }
+                if (document.frm2.wd3.value == '') {
+                    alert('비밀번호를 확인하세요');
+                    document.frm2.wd3.focus();
+                    return false;
+                }
+                if (document.frm2.nme.value == '') {
+                    alert('이름을 입력하세요');
+                    document.frm2.nme.focus();
+                    return false;
+                }
+                if (document.frm2.add.value == '') {
+                    alert('주소를 입력하세요.');
+                    document.frm2.add.focus();
+                    return false;
+                }
+                
+                document.frm.submit();
+            }
+        </script>
