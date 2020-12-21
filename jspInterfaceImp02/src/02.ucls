@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true">  
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <interface id="1" language="java" name="model.member.MemberDAO" project="jspInterfaceImp02" 
+    file="/jspInterfaceImp02/src/model/member/MemberDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="526" y="399"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="2" language="java" name="model.member.MemberDAOImplMaria" project="jspInterfaceImp02" 
+    file="/jspInterfaceImp02/src/model/member/MemberDAOImplMaria.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1010" y="154"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="model.member.MemberDAOImplOracle" project="jspInterfaceImp02" 
+    file="/jspInterfaceImp02/src/model/member/MemberDAOImplOracle.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1000" y="649"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="4">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <realization id="5">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
