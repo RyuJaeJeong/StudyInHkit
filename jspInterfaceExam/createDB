@@ -1,0 +1,39 @@
+oracle 
+
+create user jspInterfaceExam identified by 1234;
+grant connect, resource, dba to jspInterfaceExam;
+
+create table member (
+id VARCHAR2(50) not null,
+pwd VARCHAR2(50) not null,
+nme VARCHAR2(50) not null,
+phone VARCHAR2(50) not null,
+job VARCHAR2(50) not null,
+PRIMARY key (id) 
+);
+
+
+
+
+
+
+
+
+
+
+
+
+mariaDB
+
+create database jspInterfaceExam;
+grant all privileges on jspInterfaceExam. * to jspInterfaceExam@localhost identified by '1234';
+flush privileges;
+
+create table member (
+id VARCHAR(50) not null,
+pwd VARCHAR(50) not null,
+nme VARCHAR(50) not null,
+phone VARCHAR(50) not null,
+job VARCHAR(50) not null,
+PRIMARY key (id) 
+);
