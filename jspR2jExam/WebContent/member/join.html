@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form name=joinFrm>
+		<table border="1" align="center" width="350px">
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="id" value="" placeholder="아이디를 입력하세요"></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="text" name="passwd" value=""></td>
+			</tr>
+			<tr>
+				<td>비밀번호 확인</td>
+				<td><input type="text" name="passwdCheck" value=""></td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="name" value=""></td>
+			</tr>
+			<tr>
+				<td>주민등록번호</td>
+				<td align="center"><input type="text" name="sid1" value="" style="width:100px" >-<input type="text" name="sid2" value="" style="width:100px" ></td>
+			</tr>
+			<tr>
+				<td>별명</td>
+				<td><input type="text" name="nickname" value=""></td>
+			</tr>
+			<tr>
+				<td>핸드폰번호</td>
+				<td><input type="text" name="phone" value="" placeholder="'-'없이 입력"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="button" value="가입하기" onclick="join()"></td>
+			</tr>
+			
+		</table>
+	</form>
+</body>
+</html>
+
+<script>
+function join() {
+	if(confirm('가입하시겠습니까')) {
+		joinFrm.method="post";
+		joinFrm.action="joinProc.jsp";
+		joinFrm.submit();
+	}
+	
+}
+
+</script>

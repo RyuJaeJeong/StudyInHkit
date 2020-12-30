@@ -19,7 +19,7 @@ if(passwd.equals(delPass)) {
 	if(result>0){
 	out.println("<script>");
 	out.println("alert('삭제가 완료되었습니다.')");
-	out.println("location.href ='list.jsp'");
+	out.println("location.href ='login.jsp'");
 	out.println("</script>");
 	}else {
 		out.println("<script>");
