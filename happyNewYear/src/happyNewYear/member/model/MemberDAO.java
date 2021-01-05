@@ -1,4 +1,4 @@
-package Member.model;
+package happyNewYear.member.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -124,44 +124,5 @@ public class MemberDAO {
 			System.out.println("객체를 가져오지 못했습니다.");
 		}
 		return arr;
-	}
-	
-	public int getUpdate(MemberDTO dto) {
-		getConn();
-		int result = 0;
-		try {
-			
-			String sql = "update member set passwd=?,name=?,gender=?, bornYear=?,wdate=? where no = ? ";
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getPasswd());
-			pstmt.setString(2, dto.getName());
-			pstmt.setString(3, dto.getGender());
-			pstmt.setInt(4, dto.getBornYear());
-			Timestamp wdate = new Timestamp(System.currentTimeMillis());
-			pstmt.setTimestamp(5, wdate);
-			pstmt.setInt(6, dto.getNo());
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("수정에 실패하였습니다.");
-		}
-		return result;
-	}
-	
-	public int getDelete(int no) {
-		getConn();
-		int result = 0;
-		try {
-			
-			String sql = "delete from member where no=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, no);
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("수정에 실패하였습니다.");
-		}
-		return result;
 	}
 }

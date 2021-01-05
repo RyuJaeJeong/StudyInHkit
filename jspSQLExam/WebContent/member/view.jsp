@@ -17,7 +17,7 @@
 				<tr>
 					<th colspan="2"><%@ include file="../include/include_menu.jsp" %></th>
 				</tr>
-				<tr>
+				<tr height="500px">
 					<td>
 					<% 
 					 String no_ = request.getParameter("no");
@@ -37,30 +37,34 @@
 					 Timestamp wdate = dto.getWdate();
 					
 					%>
-						<table  align="center">
+						<table  align="center" border="0" >
 							<tr>
-								<td>아이디</td>
+								<td  style=" width:100px; height:30px">아이디</td>
 								<td><%=id%></td>
 							</tr>
 							<tr>
-								<td>비밀번호</td>
+								<td style=" width:100px; height:30px">비밀번호</td>
 								<td><%=passwd%></td>
 							</tr>
 							<tr>
-								<td>이름</td>
+								<td style=" width:100px; height:30px">이름</td>
 								<td><%=name%></td>
 							</tr>
 							<tr>
-								<td>성별</td>
+								<td style=" width:100px; height:30px">성별</td>
 								<td><%=gender%></td>
 							</tr>
 							<tr>
-								<td>출생연도</td>
+								<td style=" width:100px; height:30px">출생연도</td>
 								<td><%=bornYear%></td>
 							</tr>
 							<tr>
-								<td>가입일자</td>
+								<td style=" width:100px; height:30px">가입일자</td>
 								<td><%=wdate%></td>
+							</tr>
+							<tr>
+								<td style=" width:100px; height:30px"><a href="#" onclick=move('m')>[수정하기]</a></td>
+								<td style="padding-left:50px"><a href="#" onclick=move('d')>[삭제하기]</a></td>
 							</tr>
 						</table>
 						
@@ -73,3 +77,19 @@
 		</form>
 </body>
 </html>
+
+
+<script>
+function move(value1) {
+	if(value1=='m'){
+		alert('수정하시겠습니까?');
+		location.href='modify.jsp';
+	}
+	if(value1=='d'){
+		alert('삭제하시겠습니까?');
+		location.href='delete.jsp';
+	}
+	
+}
+
+</script>

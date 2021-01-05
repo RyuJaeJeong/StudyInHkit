@@ -9,9 +9,7 @@
 <body>
 	<form name="loginFrm">
 		<table border="1" align="center">
-			<tr>
-				<td colspan="2"><%@ include file="../include/include_menu.jsp" %></td>
-			</tr>
+			
 			<tr>
 				<td>
 					<table align="center">

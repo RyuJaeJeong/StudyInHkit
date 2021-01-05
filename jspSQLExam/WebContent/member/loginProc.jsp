@@ -12,6 +12,7 @@ MemberDAO dao = new MemberDAO();
 int result = dao.getLogin(loginId, loginPasswd);
 
 int cookNo = 0;
+
 if(result>0) {
 	session.setAttribute("cookNo", result);		//세션등록
 	out.println("<script>alert('로그인되었습니다.'); location.href='list.jsp';</script>");
@@ -30,11 +31,6 @@ if(result>0) {
 //세션 (sessiont)  -  서버에 저장, 보안우수
 
 //쿠키(cookie)  -  클라이언트pc, 보안취햑
-
-
-
-
-
 
 
 %>

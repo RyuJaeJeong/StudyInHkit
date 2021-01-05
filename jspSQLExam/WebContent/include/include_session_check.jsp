@@ -7,7 +7,7 @@
 
 <% 
 
-String ip = Inet4Address.getLocalHost().getHostAddress();
+//String ip = Inet4Address.getLocalHost().getHostAddress();
 
 int cookNo = 0;
 String sName = "";
@@ -16,9 +16,14 @@ if (session.getAttribute("cookNo") != null) {
 	MemberDAO dao = new MemberDAO();
 	MemberDTO dto = dao.getSelectOne(cookNo);
 	sName = dto.getName();
+}else {
+	out.println("<script>");
+	out.println("alert('로그인후 이용해주세요');");
+	out.println("location.href='login.jsp';");
+	out.println("</script>");
 }
 
-out.println(cookNo + "<hr>");
+//out.println(cookNo + "<hr>");
 
 
 

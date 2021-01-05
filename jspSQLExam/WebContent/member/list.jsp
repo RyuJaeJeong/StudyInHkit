@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>  
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +16,9 @@
 			<tr>
 				<th colspan="2"><%@ include file="../include/include_menu.jsp" %></th>
 			</tr>
-			<tr>
+			<tr height="1000px">
 				<td>
-					<table align="center">
+					<table align="center" border="1">
 						<tr>
 			 				<td>아이디</td>
 			 				<td>비밀번호</td>
@@ -45,7 +46,7 @@
 						 
 						 %>
 						 
-						 <tr>
+						 <tr >
 						 	<%System.out.println(no); %>
 						 	<%if(cookNo==no) { %>
 						 	<td><a href="#" onclick="view('<%=no%>');"><%=id%></a></td>

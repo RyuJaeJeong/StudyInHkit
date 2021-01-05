@@ -1,0 +1,10 @@
+package src.db;
+
+import java.sql.Connection;
+
+public interface Db {
+
+	public Connection dbConn();
+	public void dbConnClose();
+	
+}
