@@ -15,31 +15,50 @@ public class BoardDTO {
 	private int re_level;
 	private int hit;				//조회수
 	private String wdate;
-	
+	private String parentInfo;
 	
 	/*
-	 * 			ref			re_step 	re_level
-	 * 1		 1			   1			1				<--새글의 경우
-	 * 2		 2             1			1				<--새글의 경우
-	 * 3		 3			   1			1				<--새글의 경우
-	 * 4		 4			   1			1  				<--새글의 경우
-	 * 5		 5			   1			1
-	 * 11	     1			   2 			2
-	 * 22		 2			   2			2
-	 * 111		 1			   3			5
-	 * 111_1	 1			   3		    4
-	 * 11!_2	 1			   3			3	
+	 * 
+	 * 
+	 * 			ref			re_step 	re_level	parentInfo
+	 * 1		 1			   1			1						<--새글의 경우
+	 * 2		 2             1			1						<--새글의 경우
+	 * 3		 3			   1			1						<--새글의 경우
+	 * 4		 4			   1			1  						<--새글의 경우
+	 * 5		 5			   1			1			
+	 * 11	     1			   2 			2			1/1/1	
+	 * 22		 2			   2			2			2/2/2	
+	 * 111		 1			   3			5			1/2/2
+	 * 111_1	 1			   3		    4			1/2/2
+	 * 111_2	 1			   3			3			1/2/2
+	 * 1111		 1			   4			7			1/3/5
+	 * 1111(1)	 1			   4		    6			1/3/5
+	 * 1111_1	 		
 	 * ref : 부모글 번호	
 	 * re_step : 부모글 re_step + 1
 	 * re_level : 부모글 re_level 보다 큰 숫자들은 1씩증가,
 	 * 			  부모글 re_level + 1 을 저장 
 	 * 
 	 * order by ref desc, re_level asc
+	 *
+	 * 
+	 * 사람이 하는 일의 온도 36.5
+	 * 
 	 * 
 	 * */
 	
 	
 	
+	public String getParentInfo() {
+		return parentInfo;
+	}
+
+
+	public void setParentInfo(String parentInfo) {
+		this.parentInfo = parentInfo;
+	}
+
+
 	//cons
 	public BoardDTO() {
 		// TODO Auto-generated constructor stub
@@ -153,3 +172,64 @@ public class BoardDTO {
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * 
+ * 
+ * 			ref			re_step 	re_level	parentInfo
+ * 1		 1			   1			1						<--새글의 경우
+ * 11	     1			   2 			2			1/1/1		
+ * 111		 1			   3			5			1/2/2
+ * 111_1	 1			   3		    4			1/2/2
+ * 111_2	 1			   3			3			1/2/2
+ * 1111		 1			   4			7			1/3/5
+ * 1111(1)	 1			   4		    6			1/3/5
+ * 1111_1	 		
+ * ref : 부모글 번호	
+ * re_step : 부모글 re_step + 1
+ * re_level : 부모글 re_level 보다 큰 숫자들은 1씩증가,
+ * 			  부모글 re_level + 1 을 저장 
+ * 
+ * order by ref desc, re_level asc
+ * 
+ * 
+ * */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
