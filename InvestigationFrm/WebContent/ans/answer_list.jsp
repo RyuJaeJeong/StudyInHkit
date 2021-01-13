@@ -25,7 +25,10 @@ int count1 =0;
 int count2 =0;
 int count3 =0;
 int count4 =0;
-
+double t1;
+double t2;
+double t3;
+double t4;
 
 
 %>
@@ -100,10 +103,10 @@ int count4 =0;
 			<td><%=count4 %></td>
 		</tr>
 		<%
-		double t1 = (double)count1/(double)arr.size()*100;
-		double t2 = (double)count2/(double)arr.size()*100;
-		double t3 = (double)count3/(double)arr.size()*100;
-		double t4 = (double)count4/(double)arr.size()*100;
+		 t1 = (double)count1/(double)arr.size()*100;
+		 t2 = (double)count2/(double)arr.size()*100;
+		 t3 = (double)count3/(double)arr.size()*100;
+		 t4 = (double)count4/(double)arr.size()*100;
 		%>
 		<tr>	
 			<td>점유율</td>
@@ -114,5 +117,30 @@ int count4 =0;
 		</tr>
 	</table>
 
-
+		  <table align="center" border="1" style="margin-top:50px">
+		  			<tr>
+		  			<td><%=select1%>(<%=t1 %>%)</td>
+		  			<td><%=select2%>(<%=t2 %>%)</td>
+		  			<td><%=select3%>(<%=t3 %>%)</td>
+		  			<td><%=select4%>(<%=t4 %>%)</td>
+		  			</tr>
+                   <tr>
+                    <td style="width: 100px; height: 200px; vertical-align: bottom;">
+                        <hr style="width: 100px; height:<%=t1 %>%; background-color: red;">
+                    </td>
+                    <td style="width: 100px; height: 300px; vertical-align: bottom; ">
+                        <hr style="width: 100px; height: <%=t2 %>%; background-color: red;">
+                    </td>
+                    <td style="width: 100px; height: 300px; vertical-align: bottom; " >
+                        <hr style="width: 100px; height: <%=t3 %>%; background-color: red;">
+                    </td>
+                    <td style="width: 100px; height: 200px; vertical-align: bottom;">
+                        <hr style="width: 100px; height: <%=t4 %>%; background-color: red;">
+                    </td>
+                   </tr>
+         </table>       
+	
+	
+	
+		
 </form>
