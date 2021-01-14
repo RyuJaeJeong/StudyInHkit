@@ -10,7 +10,7 @@ public interface ResumeDAO {
 	public ResumeDTO getSelectOne(int no);
 	public int getUpdate(ResumeDTO dto);
 	public int getDel(int no);
-	
+
 	
 	
 }

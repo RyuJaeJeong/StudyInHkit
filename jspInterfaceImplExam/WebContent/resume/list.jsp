@@ -11,6 +11,7 @@
 ResumeDAO dao = new ResumeDAOImplOracle(); 
 ArrayList<ResumeDTO> arr = dao.getListAll();
 System.out.println(arr);
+
 %>
 
 <table align="center" border="1">
@@ -19,22 +20,23 @@ System.out.println(arr);
 			<%for(int i=0; i<arr.size(); i++) {
 				ResumeDTO dto = arr.get(i);
 				int no = dto.getNo();
-				String pic = dto.getPic();
+				String upload_path  = dto.getUpload_path();
+				String pic_name = dto.getPic_name();
 				String name = dto.getName();
 				String email = dto.getEmail();
 				String phone = dto.getPhone();
 				String address = dto.getAddress();
+				String path = request.getContextPath();
 				
-				
-				
-				
+				String pt1 = request.getContextPath();
+				System.out.println(pt1);
 				if(i%3 == 0) {
 				%>
 				<tr>
 				<td>
 					<table border="1">
 				        <tr>
-				            <td style="width: 100px; height: 100px;"><img src="../image/<%=dto.getPic()%>" style="width:100px; height:100px;"></td>
+				            <td style="width: 100px; height: 100px;"><img src="<%=path %>/upload/img/<%=pic_name%>" style="width:100px; height:100px;"></td>
 				        </tr>
 				        <tr>
 				            <td style="width: 100px;"><a href="#" onclick="goView('<%=no%>')"><%=name%></a></td>
@@ -52,7 +54,7 @@ System.out.println(arr);
     				<td>
 					<table border="1">
 				        <tr>
-				            <td style="width: 100px; height: 100px;"><img src="../image/<%=dto.getPic()%>" style="width:100px; height:100px;"></td>
+				            <td style="width: 100px; height: 100px;"><img src="<%=path %>/upload/img/<%=pic_name%>" style="width:100px; height:100px;"></td>
 				        </tr>
 				        <tr>
 				            <td style="width: 100px;"><a href="#" onclick="goView('<%=no%>')"><%=name%></a></td>
@@ -72,7 +74,7 @@ System.out.println(arr);
     			<td>
 					<table border="1">
 				        <tr>
-				            <td style="width: 100px; height: 100px;"><img src="../image/<%=dto.getPic()%>" style="width:100px; height:100px;"></td>
+				            <td style="width: 100px; height: 100px;"><img src="<%=path %>/upload/img/<%=pic_name%>" style="width:100px; height:100px;"></td>
 				        </tr>
 				        <tr>
 				            <td style="width: 100px;"><a href="#" onclick="goView('<%=no%>')"><%=name%></a></td>

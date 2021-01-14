@@ -21,7 +21,7 @@ public class ResumeDAOImplOracle implements ResumeDAO   {
 		try {
 			String driver ="oracle.jdbc.driver.OracleDriver";		
 			String dbUrl = "jdbc:oracle:thin:@localhost:1521/xe";
-			String dbId = "jspInterfaceImplExam";
+			String dbId = "happyNewYear";
 			String dbPasswd = "1234";
 			
 			Class.forName(driver);
@@ -40,36 +40,35 @@ public class ResumeDAOImplOracle implements ResumeDAO   {
 		int result = 0;
 		getConn();
 		try {
-			
-			
-			String sql = "insert into resume values(seq_resume.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into resume values(seq_resume.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);						
 			
-			pstmt.setString(1, dto.getPic());
-			pstmt.setString(2, dto.getName());
-			pstmt.setString(3, dto.getEmail());
-			pstmt.setString(4, dto.getPhone());
-			pstmt.setString(5, dto.getAddress());
-			pstmt.setString(6, dto.getTOEIC());
-			pstmt.setString(7, dto.getTOEFL());
-			pstmt.setString(8, dto.getJapan());
-			pstmt.setString(9, dto.getChina());
+			pstmt.setString(1, dto.getUpload_path());
+			pstmt.setString(2, dto.getPic_name());
+			pstmt.setString(3, dto.getName());
+			pstmt.setString(4, dto.getEmail());
+			pstmt.setString(5, dto.getPhone());
+			pstmt.setString(6, dto.getAddress());
+			pstmt.setString(7, dto.getTOEIC());
+			pstmt.setString(8, dto.getTOEFL());
+			pstmt.setString(9, dto.getJapan());
+			pstmt.setString(10, dto.getChina());
 			
-			pstmt.setString(10, dto.getGigan1());
-			pstmt.setString(11, dto.getSchool1());
-			pstmt.setString(12, dto.getJeongong1());
+			pstmt.setString(11, dto.getGigan1());
+			pstmt.setString(12, dto.getSchool1());
+			pstmt.setString(13, dto.getJeongong1());
 			
-			pstmt.setString(13, dto.getGigan2());
-			pstmt.setString(14, dto.getSchool2());
-			pstmt.setString(15, dto.getJeongong2());
+			pstmt.setString(14, dto.getGigan2());
+			pstmt.setString(15, dto.getSchool2());
+			pstmt.setString(16, dto.getJeongong2());
 			
-			pstmt.setString(16, dto.getGigan3());
-			pstmt.setString(17, dto.getSchool3());
-			pstmt.setString(18, dto.getJeongong3());
+			pstmt.setString(17, dto.getGigan3());
+			pstmt.setString(18, dto.getSchool3());
+			pstmt.setString(19, dto.getJeongong3());
 			
-			pstmt.setString(19, dto.getGigan4());
-			pstmt.setString(20, dto.getSchool4());
-			pstmt.setString(21, dto.getJeongong4());
+			pstmt.setString(20, dto.getGigan4());
+			pstmt.setString(21, dto.getSchool4());
+			pstmt.setString(22, dto.getJeongong4());
 			result = pstmt.executeUpdate();
 			
 			
@@ -94,7 +93,8 @@ public class ResumeDAOImplOracle implements ResumeDAO   {
 			while(rs.next())	{
 				ResumeDTO dto = new ResumeDTO();
 				dto.setNo(rs.getInt("no"));
-				dto.setPic(rs.getString("picture"));
+				dto.setUpload_path(rs.getString("upload_path"));
+				dto.setPic_name(rs.getString("pic_name"));
 				dto.setName(rs.getString("name"));
 				dto.setEmail(rs.getString("email"));
 				dto.setPhone(rs.getString("phone"));
@@ -142,7 +142,8 @@ public class ResumeDAOImplOracle implements ResumeDAO   {
 
 			if (rs.next()) {
 				dto.setNo(rs.getInt("no"));
-				dto.setPic(rs.getString("picture"));
+				dto.setUpload_path(rs.getString("upload_path"));
+				dto.setPic_name(rs.getString("pic_name"));
 				dto.setName(rs.getString("name"));
 				dto.setEmail(rs.getString("email"));
 				dto.setPhone(rs.getString("phone"));
@@ -182,37 +183,38 @@ public class ResumeDAOImplOracle implements ResumeDAO   {
 		getConn();
 		int result = 0;
 		try {
-			String sql = "update resume set picture=?, name=?, email=?, phone=?, address=?, gigan1=?, school1=?,jeongong1=?,gigan2=?, school2=?,jeongong2=?,"
+			String sql = "update resume set upload_path=?,pic_name=? ,name=?, email=?, phone=?, address=?, gigan1=?, school1=?,jeongong1=?,gigan2=?, school2=?,jeongong2=?,"
 					+ "gigan3=?,school3=?,jeongong3=?,gigan4=?, school4=?,jeongong4=?,TOEIC=?,TOEFL=?,japan=?,china=? where no = ? ";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getPic());
-			pstmt.setString(2, dto.getName());
-			pstmt.setString(3, dto.getEmail());
-			pstmt.setString(4, dto.getPhone());
-			pstmt.setString(5, dto.getAddress());
+			pstmt.setString(1, dto.getUpload_path());
+			pstmt.setString(2, dto.getPic_name());
+			pstmt.setString(3, dto.getName());
+			pstmt.setString(4, dto.getEmail());
+			pstmt.setString(5, dto.getPhone());
+			pstmt.setString(6, dto.getAddress());
 			
-			pstmt.setString(6, dto.getGigan1());
-			pstmt.setString(7, dto.getSchool1());
-			pstmt.setString(8, dto.getJeongong1());
+			pstmt.setString(7, dto.getGigan1());
+			pstmt.setString(8, dto.getSchool1());
+			pstmt.setString(9, dto.getJeongong1());
 			
-			pstmt.setString(9, dto.getGigan2());
-			pstmt.setString(10, dto.getSchool2());
-			pstmt.setString(11, dto.getJeongong2());
+			pstmt.setString(10, dto.getGigan2());
+			pstmt.setString(11, dto.getSchool2());
+			pstmt.setString(12, dto.getJeongong2());
 			
 			pstmt.setString(12, dto.getGigan3());
 			pstmt.setString(13, dto.getSchool3());
-			pstmt.setString(14, dto.getJeongong3());
+			pstmt.setString(15, dto.getJeongong3());
 			
-			pstmt.setString(15, dto.getGigan4());
-			pstmt.setString(16, dto.getSchool4());
-			pstmt.setString(17, dto.getJeongong4());
+			pstmt.setString(16, dto.getGigan4());
+			pstmt.setString(17, dto.getSchool4());
+			pstmt.setString(18, dto.getJeongong4());
 			
-			pstmt.setString(18, dto.getTOEIC());
-			pstmt.setString(19, dto.getTOEFL());
-			pstmt.setString(20, dto.getJapan());
-			pstmt.setString(21, dto.getChina());
+			pstmt.setString(19, dto.getTOEIC());
+			pstmt.setString(20, dto.getTOEFL());
+			pstmt.setString(21, dto.getJapan());
+			pstmt.setString(22, dto.getChina());
 			
-			pstmt.setInt(22, dto.getNo());
+			pstmt.setInt(23, dto.getNo());
 			
 			
 			result = pstmt.executeUpdate();

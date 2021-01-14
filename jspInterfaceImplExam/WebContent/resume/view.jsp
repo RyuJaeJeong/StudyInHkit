@@ -14,7 +14,8 @@ ResumeDAO dao = new ResumeDAOImplOracle();
 ResumeDTO dto = dao.getSelectOne(no);
 
  	
- String pic = dto.getPic();		
+String upload_path  = dto.getUpload_path();
+String pic_name = dto.getPic_name();
  String name = dto.getName();
  String email = dto.getEmail();
  String phone = dto.getPhone();
@@ -39,6 +40,9 @@ ResumeDTO dto = dao.getSelectOne(no);
  String gigan4 = dto.getGigan4();
  String school4 = dto.getSchool4();
  String jeongong4 = dto.getJeongong4();
+ 
+ String path = request.getContextPath();
+
 %>
 <html>
 <head>
@@ -53,9 +57,9 @@ ResumeDTO dto = dao.getSelectOne(no);
         <tr>
           
          <table border="1" align="center">
-            <h5 style="padding-left: 640px;">◇인적사항</h5>     
+            <h5 style="padding-left: 640px;" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;◇인적사항</h5>     
             <tr>
-              <td rowspan="4" style="width:100px;" align="center"><img src="../image/<%=dto.getPic()%>" style="width:100px; height:100px;"></td> 
+              <td rowspan="4" style="width:100px;" align="center"><img src="<%=path%>/upload/img/<%=pic_name%>" style="width:100px; height:100px;"></td> 
               <td style="width: 100px;">성명</td>
               <td style="width: 400px;"><%=name%></td>
               
@@ -131,7 +135,8 @@ ResumeDTO dto = dao.getSelectOne(no);
 		    	<td align="center"><button type="button" onclick="move('D','<%=no%>')" align="center">삭제하기</button></td>
 		    </tr>
 		</table>
-
+</tr>
+</table>
 </body>
 </html>
 

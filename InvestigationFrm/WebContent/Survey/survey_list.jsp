@@ -46,7 +46,7 @@ for(int i=0; i<arr.size(); i++) {
 			<td><a href="#" onclick="move('s','<%=no%>')"><%=question%></a></td>
 		<%}%><%else { %>
 			<td><%=question%></td>
-		<%}%>
+		<%}%>..
 		<td><%=select1%></td>
 		<td><%=select2%></td>
 		<td><%=select3%></td>

@@ -1,9 +1,12 @@
 package jspInterfaceImplExam.model.resume;
 
+import java.io.File;
+
 public class ResumeDTO {
 //field
-private int no;	
-private String pic;
+ int no;	
+private String upload_path;
+private String pic_name;
 private String name;
 private String email;
 private String phone;
@@ -37,17 +40,31 @@ public ResumeDTO() {
 
 
 //getter&setter
-public String getPic() {
-	return pic;
-}
 
-public void setPic(String pic) {
-	this.pic = pic;
-}
 
 public String getName() {
 	return name;
 }
+
+public String getUpload_path() {
+	return upload_path;
+}
+
+
+public void setUpload_path(String upload_path) {
+	this.upload_path = upload_path;
+}
+
+
+public String getPic_name() {
+	return pic_name;
+}
+
+
+public void setPic_name(String pic_name) {
+	this.pic_name = pic_name;
+}
+
 
 public void setName(String name) {
 	this.name = name;
@@ -222,8 +239,19 @@ public void setNo(int no) {
 }
 
 
+@Override
+public String toString() {
+	return "ResumeDTO [no=" + no + ", upload_path=" + upload_path + ", pic_name=" + pic_name + ", name=" + name
+			+ ", email=" + email + ", phone=" + phone + ", address=" + address + ", TOEIC=" + TOEIC + ", TOEFL=" + TOEFL
+			+ ", japan=" + japan + ", china=" + china + ", gigan1=" + gigan1 + ", school1=" + school1 + ", jeongong1="
+			+ jeongong1 + ", gigan2=" + gigan2 + ", school2=" + school2 + ", jeongong2=" + jeongong2 + ", gigan3="
+			+ gigan3 + ", school3=" + school3 + ", jeongong3=" + jeongong3 + ", gigan4=" + gigan4 + ", school4="
+			+ school4 + ", jeongong4=" + jeongong4 + "]";
+}
 
-//method
+
+
+
 
 
 }
