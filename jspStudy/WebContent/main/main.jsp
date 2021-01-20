@@ -8,15 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${menu_gubun == 'index'}">
-	<jsp:include page="./a.jsp" />
-	</c:if>
 	
-	<c:if test="${menu_gubun != 'index'}">
-	<jsp:include page="./b.jsp" />
-	</c:if>
 	
-	<c:choose>
+<%-- 	<c:choose>
 		<c:when test="${menu_gubun == 'index' }">
 			<jsp:include page="./a.jsp" />
 		</c:when>
@@ -27,6 +21,8 @@
 			<jsp:include page="./c.jsp" />
 		</c:otherwise>
 	</c:choose>
+	--%>
+	
 	<%--JSTL 문법임. IF문
 	
 	<c:choose>
@@ -53,10 +49,48 @@
 		
 		<tr>
 			<td align="center" style="padding:50px 50px;">
-				path : ${path} <br>
-				url : ${url}	<br>
-				uri : ${uri}<br>
-				${menu_gubun}
+				<%--
+					
+					path : ${path} <br>
+					url : ${url}	<br>
+					uri : ${uri}<br>
+					${menu_gubun}
+
+				--%>
+				
+				<c:choose>
+				<c:when test="${menu_gubun == 'index' }">
+					<jsp:include page="../main/main_sub.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'member_chuga' }">
+					<jsp:include page="../member/chuga.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'member_login' }">
+					<jsp:include page="../member/login.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'member_list' }">
+					<jsp:include page="../member/list.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'member_view' }">
+					<jsp:include page="../member/view.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'member_modify' }">
+					<jsp:include page="../member/modify.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'member_error' }">
+					<jsp:include page="../member/error.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:otherwise>
+					${menu_gubun}
+				</c:otherwise>
+				</c:choose>
 				<%--include file 특징, 변수공유. --%>
 			</td>
 		</tr>
