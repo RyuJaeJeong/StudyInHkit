@@ -28,7 +28,7 @@ public class IndexController extends HttpServlet {
 		String path = request.getContextPath();
 		String url = request.getRequestURI().toString();
 		System.out.println(path+"/"+url);
-		request.setAttribute("menu_gubun", "index");
+		request.setAttribute("menu_gubun", "index_");
 		String page = "/main/main.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(page); //mvc 모델의 핵심. 얘가 중간에서 컨트롤 다한다. 
 		rd.forward(request, response);

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@ include file="../include/inc_header.jsp" %>
+   
 <table>
 	<tr>
 		<td colspan="100" align="right">
@@ -18,14 +19,21 @@
 		</td>
 	
 	</tr>
+	<c:set var="menu_str01" value="${fn:indexOf(menu_gubun, '_') }"></c:set>
+	<c:set var="menu_str02" value="${fn:substring(menu_gubun,0, menu_str01) }"></c:set>
 	<tr>
 		
-		<td colspan="15" style="padding:0px 20px;">
-			<a href="${path}">Home</a>
-		</td>
-		<td style="padding:0px 20px;">
-			<a href="${path}/member_servlet/list.do">회원관리</a>
-		</td>
+		   
+	<td colspan="15" style="padding:0px 20px;" id="home">
+		<a href="${path}">Home</a>
+	</td>
+				
+			
+	<td style="padding:0px 20px;" id="member">
+		<a href="${path}/member_servlet/list.do">회원관리</a>
+	</td>
+				
+		
 		<td style="padding:0px 20px;">
 			<a href="#">메모장</a>
 		</td>
@@ -53,9 +61,11 @@
 
 
 
+<c:set var="aaa" value="010-1111-2222"></c:set>
+<%-- ${fn:length(aaa) }<br>
+${fn:substring(menu_gubun,0,6)}<br>
 
-
-
+${fn:indexOf(aaa,'-')}<br> --%>
 
 <%--
 
@@ -74,3 +84,17 @@ model
 
 
 --%>
+
+
+<c:choose>
+	<c:when test="${menu_str02 == 'index'}">
+		<script>
+			$("#home").css("background-color", "gray");	
+		</script>
+	</c:when> 
+	<c:when test="${menu_str02 == 'member' }">
+		<script>
+			$("#member").css("background-color", "gray");	
+		</script>
+	</c:when>
+</c:choose>

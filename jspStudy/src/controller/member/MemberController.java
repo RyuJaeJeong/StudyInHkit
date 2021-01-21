@@ -52,6 +52,8 @@ public class MemberController extends HttpServlet {
 			String gender = request.getParameter("gender");
 			String bornYear_ = request.getParameter("bornYear");
 			int bornYear = Integer.parseInt(bornYear_);
+			int yearcheck = bornYear_.length();
+			System.out.println(yearcheck+"길이");
 			String postcode = request.getParameter("postcode");
 			String address = request.getParameter("address");
 			String detailAddress = request.getParameter("detailAddress");

@@ -43,7 +43,7 @@
 	<table border="1" align="center">
 		<tr>
 			<td style="padding:20px 20px;">
-			<jsp:include page="../include/inc_menu.jsp"></jsp:include>
+				<jsp:include page="../include/inc_menu.jsp"></jsp:include>
 			</td>
 		</tr>
 		
