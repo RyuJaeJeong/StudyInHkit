@@ -87,6 +87,10 @@
 					<jsp:include page="../member/error.jsp"/><br>
 					${menu_gubun}
 				</c:when>
+				<c:when test="${menu_gubun == 'memo_write' }">
+					<jsp:include page="../memo/write.jsp"/><br>
+					${menu_gubun}
+				</c:when>
 				<c:otherwise>
 					${menu_gubun}
 				</c:otherwise>

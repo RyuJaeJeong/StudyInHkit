@@ -40,20 +40,37 @@ public class MemberController extends HttpServlet {
 		String url = request.getRequestURL().toString();
 		String page = "/main/main.jsp";
 		
+		String pageNumber_;
+		
+		pageNumber_= request.getParameter("pageNumber");
+		if(pageNumber_ == null||pageNumber_.trim().equals("")) {
+			pageNumber_="1";
+		}
+		int pageNumber = Integer.parseInt(pageNumber_);
+		
 		if (url.contains("chuga.do")) {
 			request.setAttribute("menu_gubun", "member_chuga");
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		}else if (url.contains("chugaProc.do")) {
+			MemberDAO dao = new MemberDAO();
 			String id = request.getParameter("id");
+			id = dao.spCharacter(id);
 			String passwd = request.getParameter("passwd");
+			passwd = dao.spCharacter(passwd);
 			String passwdChk = request.getParameter("passwdChk");
+			passwdChk = dao.spCharacter(passwdChk);
 			String name = request.getParameter("name");
+			name = dao.spCharacter(name);
 			String gender = request.getParameter("gender");
 			String bornYear_ = request.getParameter("bornYear");
+			bornYear_ = dao.spCharacter(bornYear_);
+			
 			int bornYear = Integer.parseInt(bornYear_);
 			int yearcheck = bornYear_.length();
-			System.out.println(yearcheck+"길이");
+			if(yearcheck>4) {
+				
+			}
 			String postcode = request.getParameter("postcode");
 			String address = request.getParameter("address");
 			String detailAddress = request.getParameter("detailAddress");
@@ -72,7 +89,7 @@ public class MemberController extends HttpServlet {
 			dto.setDetailAddress(detailAddress);
 			dto.setExtraAddress(extraAddress);
 			
-			MemberDAO dao = new MemberDAO();
+			
 			int result = dao.setInsert(dto);
 			String temp; 
 			if(result > 0) {
@@ -124,9 +141,48 @@ public class MemberController extends HttpServlet {
 				
 		}else if (url.contains("list.do")) {
 			request.setAttribute("menu_gubun", "member_list");
-			
 			MemberDAO dao = new MemberDAO();
-			ArrayList<MemberDTO> arr = dao.getListAll();
+			//한 화면에 보여질 게시물 갯수
+			int pageSize = 5;
+			//한 화면에 보여질 페이지 번호 갯수 갯수
+			int blockSize = 10;
+			//총 개시물 갯수
+			int totalRecord = dao.getTotalRecord();
+			
+			int jj = totalRecord - pageSize*(pageNumber - 1);
+			//시작 게시물 
+			int startRecord = pageSize*(pageNumber-1)+1;
+			//마지막 게시물
+			int lastRecord =  pageSize * pageNumber;
+			
+			//
+			int totalPage = 0;
+			int startPage = 1;
+			int lastPage = 1;
+			if(totalRecord > 0) {
+				//총 페이지 갯수
+				totalPage = totalRecord/pageSize + (totalRecord%pageSize == 0?0:1);
+				//시작 페이지
+				startPage = (pageNumber/blockSize - (pageNumber%blockSize != 0?0:1))*blockSize+1; 
+				//마지막 페이지
+				lastPage = startPage + blockSize -1;
+				if(lastPage > totalPage) {
+					lastPage = totalPage;
+				}
+			};
+			
+			request.setAttribute("pageNumber", pageNumber);
+			request.setAttribute("pageSize", pageSize);
+			request.setAttribute("blockSize", blockSize);
+			request.setAttribute("totalRecord", totalRecord);
+			request.setAttribute("startRecord", startRecord);
+			request.setAttribute("lastRecord", lastRecord);
+			request.setAttribute("totalPage", totalPage);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("lastPage", lastPage);
+			request.setAttribute("jj", jj);
+			
+			ArrayList<MemberDTO> arr = dao.getListAll(startRecord, lastRecord);
 			
 			request.setAttribute("list", arr);
 			

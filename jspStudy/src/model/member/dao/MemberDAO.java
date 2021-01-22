@@ -79,7 +79,47 @@ public class MemberDAO {
 		
 	}
 	
-	public ArrayList<MemberDTO> getListAll() {
+	public ArrayList<MemberDTO> getListAll(int startRecord, int lastRecord) {
+		ArrayList<MemberDTO> arr = new ArrayList<>();
+		conn = getConn();
+		try {
+			String basicSql = "";  //업무에 가면 *보다는 출력할 필드명을 모두 명시해주는 것이 ㅈㅇㄷ좋다. 
+			basicSql += "select*from member where no>?";
+			basicSql += "order by id desc";
+			
+			String sql = "";
+			sql += "select*from(select A.*, Rownum Rnum from ("+ basicSql + ")A)";
+			sql += "where Rnum>= ? and Rnum <= ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 0);
+			pstmt.setInt(2, startRecord);
+			pstmt.setInt(3, lastRecord);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				MemberDTO dto = new MemberDTO();
+				
+				dto.setNo(rs.getInt("no"));
+				dto.setId(rs.getString("id"));
+				dto.setPasswd(rs.getString("passwd"));
+				dto.setName(rs.getString("name"));
+				dto.setGender(rs.getString("gender"));
+				dto.setBornYear(rs.getInt("bornYear"));
+				dto.setRegiDate(rs.getTimestamp("regidate"));
+				arr.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("객체를 가져오지 못했습니다.");
+		}finally {
+			getConnClose(rs, pstmt, conn);
+		}
+		
+		return arr;
+		
+	}
+	
+	public ArrayList<MemberDTO> getSelectAll() {
 		ArrayList<MemberDTO> arr = new ArrayList<>();
 		conn = getConn();
 		try {
@@ -132,6 +172,8 @@ public class MemberDAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("객체를 가져오지 못했습니다.");
+		}finally {
+			getConnClose(rs, pstmt, conn);
 		}
 		return dto;
 	}
@@ -157,6 +199,8 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("수정에 실패하였습니다.");
+		}finally {
+			getConnClose(rs, pstmt, conn);
 		}
 		return result;
 	}
@@ -173,6 +217,8 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("삭제에 실패하였습니다.");
+		} finally {
+			getConnClose(rs, pstmt, conn);
 		}
 		return result;
 	}
@@ -191,8 +237,52 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("삭제에 실패하였습니다.");
+		}finally {
+			getConnClose(rs, pstmt, conn);
 		}
 		return result;
 	}
+	
+	public int getTotalRecord() {
+		conn = getConn();
+		int result = 0;
+		try {
+			String sql = "select count(*) from member where no > ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 0);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("삭제에 실패하였습니다.");
+		} finally {
+			getConnClose(rs, pstmt, conn);
+		}
+		return result;
+	}
+
+	
+	
+	public String spCharacter(String something) {
+		
+		
+		something = something.replace("<", "&lt;");	//특수문자 치환 처리.!
+		something = something.replace(">", "&gt;");
+		something = something.replace("&", "&amp;");
+		something = something.replace("\"", "&quot;");
+		something = something.replace("'", "&apos;");
+		
+		
+		
+		return something;
+		
+		
+		
+	}
+	
+	
+	
 	
 }

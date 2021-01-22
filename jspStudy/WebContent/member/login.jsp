@@ -12,11 +12,11 @@
 	<table align="center">
 						<tr>
 							<td>아이디</td>
-							<td><input type="text" name="loginId" value=""></td>
+							<td><input type="text" name="loginId" value="" onkeypress="JavaScript:press(this.form)"></td>
 						</tr>
 						<tr>
 							<td>비밀번호</td>
-							<td><input type="password" name="loginPasswd" value=""></td>
+							<td><input type="password" name="loginPasswd" value="" onkeypress="JavaScript:press(this.form)"></td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
@@ -46,4 +46,10 @@ function join() {
 	}
 	
 }
+
+$('form input').keydown(function(e) {
+    if (e.keyCode == 13) {
+        login()
+    }
+});			//엔터키 입력시 로그인.
 </script>

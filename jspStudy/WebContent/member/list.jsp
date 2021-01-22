@@ -42,15 +42,47 @@
 			<td>${dto.regiDate }</td>
 		</tr>
 	</c:forEach>
+	<c:if test="${totalRecord>0}">
+		<tr>
+			<td colspan="7" height="50" align="center">
+				<a href="#" onclick="GoPage('member_list', '1', '');">[첫페이지]</a>
+				<c:if test="${startPage > blockSize}">
+					<a href="#" onclick="GoPage('member_list', '${startPage - blockSize}', '');">[이전페이지]</a>
+				</c:if>
+				<c:if test="${startPage <= blockSize}">
+					[이전페이지]
+				</c:if>
+				<c:forEach var="i" begin="${startPage }" end="${lastPage }" step="1">
+					<c:if test="${i == pageNumber }">
+						[${i}]
+					</c:if>
+					<c:if test="${i != pageNumber }">
+						<a href="#" onclick="GoPage('member_list','${i}','');">${i }</a>
+					</c:if>
+				</c:forEach>
+				<c:if test="${lastPage < totalPage}">
+					<a href="#" onclick="GoPage('member_list', '${startPage + blockSize}', '');">[다음페이지]</a>
+				</c:if>
+				<c:if test="${lastPage>=totalPage}">
+					[다음페이지]
+				</c:if>
+				<a href="#" onclick="GoPage('member_list', '${totalPage}', '');">[끝페이지]</a>
+			</td>
+		</tr>
+	</c:if>
+	<c:if test="${sessionScope.cookNo == null ||sessionScope.cookNo == 0}">
+		<tr>
+			<td colspan="7" height="50" align="right">
+				<button type="button" onclick="GoPage('member_join')">
+					가입하기
+				</button>
+			</td>
+		</tr>
+	</c:if>
 	
-	<tr>
-		<td colspan="7" height="50" align="right">
-			<button type="button" onclick="GoPage('member_join')">
-				가입하기
-			</button>
-		</td>
-	</tr>
+	
 </table>
+
 
 <script>
 function GoPage(value1, value2, value3) {
@@ -65,3 +97,35 @@ function GoPage(value1, value2, value3) {
 }
 
 </script>
+
+
+
+
+
+
+
+
+
+<%--
+String pageNumber_ = "12a34ㄱㄴㄷ";
+char imsi;
+
+for(int i=0; i<pageNumber_.length(); i++) {
+	imsi = pageNumber_.charAt(i);
+	if(imsi>='0' && imsi <= '9') {
+		out.println(imsi + ":숫자입니다. <br>");
+	}else if(imsi >= 'a' && imsi <= 'z') {
+		out.println(imsi + ":소문자입니다. <br>");
+	}else if(imsi >= 'A' && imsi <= 'Z') {
+		out.println(imsi + ":대문자입니다. <br>");
+	}else if(imsi >= 'ㄱ' && imsi <= 'ㅎ') {
+		out.println(imsi + ":한글자음입니다. <br>");
+	}
+	
+}
+
+
+--%>
+
+
+

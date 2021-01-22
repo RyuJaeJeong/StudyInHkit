@@ -35,7 +35,7 @@
 				
 		
 		<td style="padding:0px 20px;">
-			<a href="#">메모장</a>
+			<a href="${path}/memo_servlet/write.do">메모장</a>
 		</td>
 		<td style="padding:0px 20px;">
 			<a href="#">방명록</a>
