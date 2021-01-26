@@ -40,8 +40,8 @@
 		<td style="padding:0px 20px;">
 			<a href="#">방명록</a>
 		</td>
-		<td style="padding:0px 20px;">
-			<a href="#">설문조사</a>
+		<td style="padding:0px 20px;" id="survey">
+			<a href="${path}/survey_servlet/index.do">설문조사</a>
 		</td>
 		<td style="padding:0px 20px;">
 			<a href="#">게시판</a>
@@ -95,6 +95,11 @@ model
 	<c:when test="${menu_str02 == 'member' }">
 		<script>
 			$("#member").css("background-color", "gray");	
+		</script>
+	</c:when>
+	<c:when test="${menu_str02 == 'survey' }">
+		<script>
+			$("#survey").css("background-color", "gray");	
 		</script>
 	</c:when>
 </c:choose>

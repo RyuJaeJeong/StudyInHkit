@@ -11,7 +11,7 @@
 
 int cookNo = 0;
 String sName = "";
-if (session.getAttribute("cookNo") != null) {
+/* if (session.getAttribute("cookNo") != null) {
 	cookNo = (int) session.getAttribute("cookNo");
 	MemberDAO dao = new MemberDAO();
 	MemberDTO dto = dao.getSelectOne(cookNo);
@@ -21,7 +21,7 @@ if (session.getAttribute("cookNo") != null) {
 	out.println("alert('로그인후 이용해주세요');");
 	out.println("location.href='login.jsp';");
 	out.println("</script>");
-}
+} */
 
 //out.println(cookNo + "<hr>");
 

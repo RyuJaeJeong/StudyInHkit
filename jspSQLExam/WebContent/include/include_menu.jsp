@@ -1,7 +1,7 @@
 <%@page import="java.net.Inet4Address"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "../include/include_session_check.jsp" %>
+<%@ include file = "../include/include_session_check.jsp" %> 
 
 <%String ip= request.getParameter("ip");%>
 
@@ -24,7 +24,7 @@
 		<%}%>
 		</th>
 		<th>
-			<jsp:include page="../include/include_top_common.jsp" flush="false">
+			<%-- --%><jsp:include page="../include/include_top_common.jsp" flush="false">
 			<jsp:param value="<%=ip%>" name="ip"/></jsp:include>
 		</th>
 	</tr>
