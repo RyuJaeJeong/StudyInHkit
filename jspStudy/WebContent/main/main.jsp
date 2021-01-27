@@ -92,6 +92,10 @@
 					<jsp:include page="../memo/write.jsp"/><br>
 					${menu_gubun}
 				</c:when>
+				<c:when test="${menu_gubun == 'calculator_index' }">
+					<jsp:include page="../calculator/index.jsp"/><br>
+					${menu_gubun}
+				</c:when>
 				<c:when test="${menu_gubun == 'survey_index' }">
 					<jsp:include page="../survey/index.jsp"/><br>
 					${menu_gubun}

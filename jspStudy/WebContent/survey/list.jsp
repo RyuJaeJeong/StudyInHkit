@@ -107,6 +107,3 @@
 	</tr>
 </table>
 
-<script>
-function 
-</script>

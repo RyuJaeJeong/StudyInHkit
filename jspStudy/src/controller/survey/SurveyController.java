@@ -147,6 +147,7 @@ public class SurveyController extends HttpServlet {
 		
 		
 		}else if(url.contains("list.do")) {
+			System.out.println("여기4");
 			int pageSize = 10; //화면에 보여질 게시물 갯수
 			int blockSize = 10;
 			//int totalRecord = dao.getTotalRecord(list_gubun, search_option, search_data, search_data_s, search_data_e );
@@ -195,6 +196,7 @@ public class SurveyController extends HttpServlet {
 			page = "/survey/list.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
+			
 			
 		}
 	}

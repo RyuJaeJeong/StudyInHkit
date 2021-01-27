@@ -44,6 +44,9 @@
 			<a href="${path}/survey_servlet/index.do">설문조사</a>
 		</td>
 		<td style="padding:0px 20px;">
+			<a href="${path}/cal_servlet/index.do">계산기</a>
+		</td>
+		<td style="padding:0px 20px;">
 			<a href="#">게시판</a>
 		</td>
 		<td style="padding:0px 20px;">
