@@ -14,19 +14,19 @@
 		</tr>
 		<tr>
 			<td style="align:center;">답변1</td>
-			<td><input type="text" name="ans1" id="ans1"></td>
+			<td><input type="text" name="ans1" id="ans1"  ></td>
 		</tr>
 		 <tr>
 			<td style="align:center;">답변2</td>
-			<td><input type="text" name="ans2" id="ans2"></td>
+			<td><input type="text" name="ans2" id="ans2"  ></td>
 		</tr>
 		<tr>
 			<td style="align:center;">답변3</td>
-			<td><input type="text" name="ans3" id="ans3"></td>
+			<td><input type="text" name="ans3" id="ans3"  ></td>
 		</tr>
 		<tr>
 			<td style="align:center;">답변4</td>
-			<td><input type="text" name="ans4" id="ans4"></td>
+			<td><input type="text" name="ans4" id="ans4"  ></td>
 		</tr>
 		<tr>
 			<td style="align:center;">상태</td>

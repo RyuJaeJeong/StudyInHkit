@@ -55,8 +55,8 @@
 				</c:if>
 				<c:forEach var="dto" items="${list}">
 					<tr>
-						<td>${jj}</td>
-						<td><a href="#" onclick="suntaek_view('${dto.no}');">${dto.question}</a></td>
+						<td><a  href="#" onclick="suntaek_view('${dto.no}');">${jj}</a></td>
+						<td><a href="#" onclick="suntaek_josa('${dto.no}');">${dto.question}</a></td>
 						<td>${dto.start_date}<br/>${dto.last_date}</td>
 						<td align="center">${dto.survey_counter}</td>
 						<td align="center">${dto.status}</td>
@@ -103,6 +103,7 @@
 			<button type="button" onclick="suntaek_list('ing');">진행중인 설문목록</button>
 			<button type="button" onclick="suntaek_list('end');">종료된 설문목록</button>
 			<button type="button" onclick="GoChuga();">등록하기</button>
+			<button type="button" onclick="GoList_2();">문제풀이</button>
 		</td>
 	</tr>
 </table>

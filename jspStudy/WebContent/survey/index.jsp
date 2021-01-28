@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-    <%@ include file="../include/inc_header.jsp" %>
+<%@ include file="../include/inc_header.jsp" %>
     
     <input type="text" name="a" style="display: ;"><br>
     <span style="display:none;" id="span_pageNumber">${pageNumber}</span>
@@ -9,7 +8,7 @@
     <span style="display:none;" id="span_no">${no}</span>
     <span style="display:none;" id="span_search_option">${search_option}</span>
     <span style="display:none;" id="span_search_data">${search_data}</span>
-    search_date_check : <span  id="span_search_date_check">${search_date_check}</span>   
+      
     <span style="display:none;" id="span_search_data_s">${search_data_s}</span>
     <span style="display:none;" id="span_search_data_e">${search_data_e}</span>
     
@@ -108,6 +107,105 @@
     		suntaek_page('1');
     		GoList();
     	}
+    	
+    	function suntaek_josa(value1) {
+    		var param = {
+    				no : value1
+    		}
+    		
+    		$.ajax({
+    			type: "post",
+    			data: param,
+    			url:"${path}/survey_servlet/josa.do",
+    			success: function(result) {
+    				$("#result").html(result);
+    			}
+    		});
+    		
+    	}
+    	
+    	function GoJosaProc() {
+    		if(confirm('등록하시겠습니까?')) {
+    			alert('조사가 완료되었습니다. 감사합니다');
+    			$.ajax({
+    				type: "post",
+    				data: $('form').serialize(),
+    				url: "${path}/survey_servlet/JosaProc.do",
+    				success: function() {
+    					
+    					suntaek_page('1');
+    					GoList();
+    				}
+    			
+    			});
+    		}
+    	}
+    	
+    	function suntaek_view(value1) {
+    		var param = {
+    				no : value1
+    		}
+    		
+    		$.ajax({
+    			type: "post",
+    			data: param,
+    			url:"${path}/survey_servlet/view.do",
+    			success: function(result) {
+    				$("#result").html(result);
+    			}
+    		});
+    	}
+    	
+    	function GoList_2() {
+    		var param = {}
+    		$.ajax ({
+    			type:"post",
+    			data:param,
+    			url:"${path}/survey_servlet/list_2.do",
+ 				success: function(data) {
+ 					$("#result").html(data);
+ 				}   		
+    		});
+    	}
+    	
+    	function goSaveProc() {
+    		if(confirm('제출하시겠습니까?')) {
+    			var param = {
+    					"answer_total" : $("#span_answer_total").text()
+    			}
+    			$.ajax ({
+        			type:"post",
+        			data:param,
+        			url:"${path}/survey_servlet/saveProc.do",
+     				success: function(data) {
+     					suntaek_page('1');
+     				}   		
+        		});
+    			
+    		}
+    	}
+    	
+    	function check_answer(value1, value2) {
+    		$("#span_answer_"+value2).text(value1);
+    		$("#span_no_"+value2).text();
+    		var counter = parseInt($("#span_list_size").text());
+        	var msg = "";
+        	for(i=0; i<counter; i++) {
+        		q_no = $("#span_no_"+i).text();
+        		answer = $("#span_answer_" + i).text();
+        		
+        		if(answer.length>0) {
+        			if(msg == '') {
+        				msg = q_no + ":" + answer;
+        				
+        			}else {
+        				msg = msg + "|" + q_no + ":" + answer;
+        			}
+        		}
+        	}
+        	$("#span_answer_total").text(msg);
+    	}
+    	
     	
     	
     </script>

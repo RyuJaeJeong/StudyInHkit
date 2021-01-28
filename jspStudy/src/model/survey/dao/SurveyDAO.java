@@ -7,7 +7,9 @@ import java.util.ArrayList;
 
 import db.DbExample;
 import model.member.dto.MemberDTO;
+import model.survey.dto.SurveyAnswerDTO;
 import model.survey.dto.SurveyDTO;
+
 
 public class SurveyDAO {
 	
@@ -182,6 +184,89 @@ public class SurveyDAO {
 			getConnClose(rs, pstmt, conn);
 		}
 		return list;
+	}
+	
+	public SurveyDTO getSelectOne(int no) {
+		conn = getConn();
+		SurveyDTO dto = new SurveyDTO();
+		try {
+			String sql = "select*from survey_table where no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dto.setNo(rs.getInt("no"));
+				dto.setQuestion(rs.getString("Question"));
+				dto.setAns1(rs.getString("ans1"));
+				dto.setAns2(rs.getString("ans2"));
+				dto.setAns3(rs.getString("ans3"));
+				dto.setAns4(rs.getString("ans4"));
+				dto.setStart_date(rs.getTimestamp("start_date"));
+				dto.setLast_date(rs.getTimestamp("last_date"));
+				dto.setRegi_date(rs.getTimestamp("regi_date"));
+				dto.setStatus(rs.getString("status"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("객체를 가져오지 못했습니다.");
+		}
+		return dto;
+	}
+	
+	public int setJosa(SurveyAnswerDTO ansDTO) {
+		conn = getConn();
+		int result = 0;
+		try {
+			String sql = "insert into survey_answer values(seq_survey_answer.NEXTVAL,?,?,CURRENT_TIMESTAMP)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ansDTO.getNo());
+			pstmt.setInt(2, ansDTO.getAnswer());
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.print("입력 실패");
+		}finally {
+			getConnClose(rs, pstmt, conn);
+		}
+		return result;
+	}
+	
+	public ArrayList getView(int no) {
+		conn = getConn();
+		ArrayList arr = new ArrayList<>();
+		SurveyDTO dto = new SurveyDTO();
+		SurveyAnswerDTO ansDTO = new SurveyAnswerDTO();
+		try {
+			String sql="";
+			sql += "select t.no, t.question, t.ans1, t.ans2, t.ans3, t.ans4,t.start_date,t.last_date,t.regi_date, t.status,  a.answer, a.answer_no";
+			sql += " from survey_table t inner join survey_answer a";
+			sql += " on t.? = a.?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.setInt(2, no);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dto.setNo(rs.getInt("no"));
+				dto.setQuestion(rs.getString("Question"));
+				dto.setAns1(rs.getString("ans1"));
+				dto.setAns2(rs.getString("ans2"));
+				dto.setAns3(rs.getString("ans3"));
+				dto.setAns4(rs.getString("ans4"));
+				dto.setStart_date(rs.getTimestamp("start_date"));
+				dto.setLast_date(rs.getTimestamp("last_date"));
+				dto.setRegi_date(rs.getTimestamp("regi_date"));
+				dto.setStatus(rs.getString("status"));
+				ansDTO.setAnswer(rs.getInt("answer"));
+				ansDTO.setAnswer_no(rs.getInt("answer_no"));
+				
+				
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("객체를 가져오지 못했습니다.");
+		}
+		return arr;
 	}
 	
 }

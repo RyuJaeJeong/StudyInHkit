@@ -37,6 +37,7 @@ function GoControl() {
 
 
 function inp(value1) {
+	
 	number += value1;
 	$("#screen").text(number);
 	

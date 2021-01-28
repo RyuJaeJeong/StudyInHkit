@@ -62,17 +62,16 @@ public class SurveyController extends HttpServlet {
 		temp = request.getParameter("pageNumber");
 		int pageNumber = util.numberCheck(temp,1);
 		
-		temp = request.getParameter("pageNumber");
-		int no = util.numberCheck(temp, 0);
+		/*
+		 * temp = request.getParameter("pageNumber"); int no = util.numberCheck(temp,
+		 * 0);
+		 */
 		
 		temp = request.getParameter("list_gubun");
 		String list_gubun = util.list_gubunCheck(temp);
 		
 		String search_option = request.getParameter("search_option");
 		String search_data = request.getParameter("search_data");
-		
-		
-		
 		String search_data_s =  request.getParameter("search_data_s");
 		String search_data_e =  request.getParameter("search_data_e");
 		String search_date_check = request.getParameter("search_date_check");
@@ -146,14 +145,11 @@ public class SurveyController extends HttpServlet {
 			int result = dao.setInsert(dto);
 		
 		
-		}else if(url.contains("list.do")) {
-			System.out.println("여기4");
+		}else if(url.contains("list.do")||url.contains("list_2.do")) {
 			int pageSize = 10; //화면에 보여질 게시물 갯수
 			int blockSize = 10;
 			//int totalRecord = dao.getTotalRecord(list_gubun, search_option, search_data, search_data_s, search_data_e );
 			System.out.println(search_option+"-"+search_data);
-			
-			
 			System.out.println("search_data_s : " + search_data_s);
 			System.out.println("search_data_e : " + search_data_e);
 			int totalRecord = dao.getTotalRecord(list_gubun,search_option, search_data,search_data_s, search_data_e,search_date_check);
@@ -193,9 +189,55 @@ public class SurveyController extends HttpServlet {
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("lastPage", lastPage);
 			
-			page = "/survey/list.jsp";
+			if(url.contains("list.do")) {
+				page = "/survey/list.jsp";
+			}else {
+				page = "/survey/list_2.jsp";
+			}
+			
+			
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
+			
+			
+		}else if(url.contains("josa.do")) {
+			String no_ = request.getParameter("no");
+			int no = Integer.parseInt(no_);
+			dto = dao.getSelectOne(no);
+			request.setAttribute("dto", dto);
+			
+			page = "/survey/josa.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
+			
+		}else if(url.contains("JosaProc.do")) {
+			String no_ = request.getParameter("no");
+			int no = Integer.parseInt(no_);
+			String answer_ = request.getParameter("answer");
+			int answer = Integer.parseInt(answer_);
+			
+			ansDTO.setNo(no);
+			ansDTO.setAnswer(answer);
+			
+			int result = dao.setJosa(ansDTO);
+			
+			
+			
+		}else if(url.contains("view.do")) {
+			String no_ = request.getParameter("no");
+			int no = Integer.parseInt(no_);
+			ArrayList arr = dao.getView(no);
+			
+			dto = (SurveyDTO) arr.get(0);
+			ansDTO = (SurveyAnswerDTO) arr.get(1);
+			
+			
+			request.setAttribute("dto", dto);
+			
+			page = "/survey/view.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
+			
 			
 			
 		}
