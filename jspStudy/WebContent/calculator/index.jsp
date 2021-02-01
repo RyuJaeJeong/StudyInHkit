@@ -35,13 +35,23 @@ function GoControl() {
 } 
 
 
-
+var count = 1;
 function inp(value1) {
 	
+		if(count == 1) {
+			$("#a"+value1).css("background-color", "gray");
+			count = 0;
+		}else {
+			$("#a"+value1).css("background-color", "white");
+			count = 1;
+		}
+		
 	number += value1;
 	$("#screen").text(number);
 	
 }
+
+
 
 function solve() {
 	number=eval(number);

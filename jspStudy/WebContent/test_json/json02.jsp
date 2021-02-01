@@ -3,7 +3,7 @@
 <%request.setCharacterEncoding("UTF-8"); %>
 
 <%@ page import="org.json.simple.JSONObject" %>
-<%@page import="java.io.PrintWriter" %>
+<%@ page import="java.io.PrintWriter" %>
 <%
 
 String name = request.getParameter("name");

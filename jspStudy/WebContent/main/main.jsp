@@ -100,6 +100,10 @@
 					<jsp:include page="../survey/index.jsp"/><br>
 					${menu_gubun}
 				</c:when>
+				<c:when test="${menu_gubun == 'questionBank_makeQuestion' }">
+					<jsp:include page="../questionBank/makeQuestion.jsp"/><br>
+					${menu_gubun}
+				</c:when>
 				<c:otherwise>
 					${menu_gubun}
 				</c:otherwise>

@@ -74,6 +74,7 @@ public class SurveyController extends HttpServlet {
 		String search_data = request.getParameter("search_data");
 		String search_data_s =  request.getParameter("search_data_s");
 		String search_data_e =  request.getParameter("search_data_e");
+		System.out.println(search_data_s+"/"+search_data_e);
 		String search_date_check = request.getParameter("search_date_check");
 		System.out.println("search_date_check : " + search_date_check);
 		
@@ -240,6 +241,23 @@ public class SurveyController extends HttpServlet {
 			
 			
 			
+		}else if(url.contains("saveProc.do")) {
+			String answer_total = request.getParameter("answer_total");
+			System.out.println("answer_total:"+answer_total);
+			String [] answer_totalArr = answer_total.split("[|]");
+			
+			for (int i = 0; i < answer_totalArr.length; i++) {
+				String[] imsiArr = answer_totalArr[i].split(":");
+				int tempNo = Integer.parseInt(imsiArr[0]);
+				int tempAnswer = Integer.parseInt(imsiArr[1]);
+				
+				System.out.println("tempNo : "+ tempNo+"tempAnswer : "+tempAnswer);
+				
+				ansDTO.setNo(tempNo);
+				ansDTO.setAnswer(tempAnswer);
+				dao.setJosa(ansDTO);
+				
+			}
 		}
 	}
 

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ include file="../include/inc_header.jsp" %>
- 
- <form name='founderFrm'>
+<%@ include file="../include/inc_header.jsp" %> 
+
+<form name='founderFrm'>
 	 <h3 align="center"> 아이디찾기 </h3>
 	 <table align="center" border="1">
 	 	<tr>

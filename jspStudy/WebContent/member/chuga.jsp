@@ -156,7 +156,7 @@ function join() {
     
     
     function id_check_win_open(value1) {		//새창 열어서 아이디 중복 체크 
-    	window.open("${path}/member_servlet/id_check_win.do", "네이버 새창", 
+    	window.open("${path}/member_servlet/id_check_win.do", "아이디체크 새창", 
     	"width=640, height=480, toolbar=no, menubar=no, resizable=yes");
     	
     }
