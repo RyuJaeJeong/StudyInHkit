@@ -60,7 +60,7 @@
 				--%>
 				
 				<c:choose>
-				<c:when test="${menu_gubun == 'index' }">
+				<c:when test="${menu_gubun == 'index_' }">
 					<jsp:include page="../main/main_sub.jsp"/><br>
 					${menu_gubun}
 				</c:when>
