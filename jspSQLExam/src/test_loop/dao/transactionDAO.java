@@ -35,11 +35,9 @@ public class transactionDAO {
 			
 			long start_time = System.currentTimeMillis();
 			conn.setAutoCommit(false);  //자동커밋해제
-			Savepoint savePoint = null;
+			
 			for(int i=1; i<=100000; i++) {
-				if(i==1000) {
-					savePoint = conn.setSavepoint("s1");
-				}
+				
 				String sql = "insert into transactionTBL values(?,?,CURRENT_TIMESTAMP)";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, i);
@@ -47,7 +45,7 @@ public class transactionDAO {
 				pstmt.executeUpdate();
 				pstmt.close();
 			}
-			conn.rollback(savePoint);
+			
 			
 			System.out.println("--입력 성공--");
 			conn.commit();
