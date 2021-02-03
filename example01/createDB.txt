@@ -1,0 +1,27 @@
+//db 계정 생성
+
+create user example01 identified by 1234;
+grant connect, resource, dba to example01;
+
+//테이블 스페이스 생성.
+
+create TABLESPACE example01 
+DATAFILE 'D:/2j/workspace/example01/example01.dbf'
+size 50m 
+AUTOEXTEND on next 10m 
+MAXSIZE UNLIMITED
+FLASHBACK on;
+
+//시퀀스 생성 
+
+create sequence seq_memo start with 1 increment by 1 minvalue 1;
+
+//테이블 생성 
+
+create table memo (
+id number not null,
+name varchar2(100) not null,
+content varchar2(3000) not null,
+wdate TIMESTAMP default current_timestamp
+);
+
