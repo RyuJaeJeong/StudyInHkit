@@ -35,7 +35,7 @@
 				
 		
 		<td style="padding:0px 20px;">
-			<a href="${path}/memo_servlet/write.do">메모장</a>
+			<a href="${path}/memo_servlet/index.do">메모장</a>
 		</td>
 		<td style="padding:0px 20px;">
 			<a href="#">방명록</a>
@@ -46,11 +46,11 @@
 		<td style="padding:0px 20px;" id="questionBank">
 			<a href="${path}/questionBank_servlet/makeQuestion.do">문제은행</a>
 		</td>
-		<td style="padding:0px 20px;">
+		<td style="padding:0px 20px;" id="calculator">
 			<a href="${path}/cal_servlet/index.do">계산기</a>
 		</td>
-		<td style="padding:0px 20px;">
-			<a href="#">게시판</a>
+		<td style="padding:0px 20px;" id="board">
+			<a href="${path}/board_servlet/index.do">게시판</a>
 		</td>
 		<td style="padding:0px 20px;">
 			<a href="#">쇼핑몰</a>
@@ -106,6 +106,16 @@ model
 	<c:when test="${menu_str02 == 'survey' }">
 		<script>
 			$("#survey").css("background-color", "gray");	
+		</script>
+	</c:when>
+	<c:when test="${menu_str02 == 'board' }">
+		<script>
+			$("#board").css("background-color", "gray");	
+		</script>
+	</c:when>
+	<c:when test="${menu_str02 == 'calculator' }">
+		<script>
+			$("#calculator").css("background-color", "gray");	
 		</script>
 	</c:when>
 </c:choose>

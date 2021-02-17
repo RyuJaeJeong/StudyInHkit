@@ -88,8 +88,8 @@
 					<jsp:include page="../member/error.jsp"/><br>
 					${menu_gubun}
 				</c:when>
-				<c:when test="${menu_gubun == 'memo_write' }">
-					<jsp:include page="../memo/write.jsp"/><br>
+				<c:when test="${menu_gubun == 'memo_index' }">
+					<jsp:include page="../memo/index.jsp"/><br>
 					${menu_gubun}
 				</c:when>
 				<c:when test="${menu_gubun == 'calculator_index' }">
@@ -102,6 +102,10 @@
 				</c:when>
 				<c:when test="${menu_gubun == 'questionBank_makeQuestion' }">
 					<jsp:include page="../questionBank/makeQuestion.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'board_index' }">
+					<jsp:include page="../board/index.jsp"/><br>
 					${menu_gubun}
 				</c:when>
 				<c:otherwise>

@@ -1,8 +1,13 @@
 package common;
 
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class util {
 	public Map getDateTime() {
@@ -58,6 +63,31 @@ public class util {
 	
 	}
 	
+	public String[] getServerInfo(HttpServletRequest request) throws UnknownHostException {
+		String[] result = new String[6];
+		String referer = request.getHeader("REFERER");
+		if(referer == null || referer.trim().equals("") ) {
+			referer = "";
+			
+		}
+		String path = request.getContextPath();
+		String url = request.getRequestURL().toString();
+		String uri = request.getRequestURI().toString();
+		String ip = Inet4Address.getLocalHost().getHostAddress();
+		String ip6 = "";
+		
+		result[0] = referer;
+		result[1] = path;
+		result[2] = url;
+		result[3] = uri;
+		result[4] = ip;
+		result[5] = ip6;
+		
+		
+		return result;
+				
+	}
+	
 	public String[] searchCheck(String search_option, String search_data, String search_data_s, String search_data_e, String search_date_check) {
 		String [] result = new String[5];
 		if(search_option == null|| search_option.trim().equals("")) {
@@ -105,5 +135,72 @@ public class util {
 		
 		return result;
 	}
+	
+	public String[] sessionCheck(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		int cookNo = 0;
+		if(session.getAttribute("cookNo") != null) {
+			cookNo = (Integer)session.getAttribute("cookNo");
+		}
+		
+		String cookId = "";
+		if(session.getAttribute("cookId") != null) {
+			cookId = (String)session.getAttribute("cookId");
+		}
+		
+		String cookName = "";
+		if(session.getAttribute("cookId") != null) {
+			cookName = (String)session.getAttribute("cookName");
+		}
+		String[] result = new String[3];
+		result[0] = cookNo + "";
+		result[1] = cookId;
+		result[2] = cookName;
+		return result;
+		
+	
+	}
+	
+	public int[] pager(int pageSize, int blockSize, int totalRecord, int pageNumber) {
+		int[]  result = new int[6];
+		int jj = totalRecord - pageSize * (pageNumber - 1);
+		int startRecord = pageSize * pageNumber;
+		int lastRecord = pageSize * pageNumber;
+		if( lastRecord >totalRecord) {
+			lastRecord = totalRecord;
+		}
+		
+		int totalPage = 0;
+		int startPage = 1;
+		int lastPage = 1;
+		if(totalRecord > 0) {
+			totalPage = totalRecord / pageSize + (totalRecord % pageSize == 0? 0:1);
+			startPage = (pageNumber / blockSize - (pageNumber % blockSize != 0? 0:1)) * blockSize + 1;
+			lastPage = startPage + blockSize - 1;
+			if (lastPage>totalPage) {
+				lastPage = totalPage;
+			}
+		}
+		
+		result[0] = jj;
+		result[1] = startRecord;
+		result[2] = lastRecord;
+		result[3] = totalPage;
+		result[4] = startPage;
+		result[5] = lastPage;
+		
+		return result;
+		
+	}
+	
+	public String nullCheck(String str) {
+		String result = str;
+		if(result == null || result.trim().equals("")) {
+			result = "";
+		}
+		result = result.trim();
+		return result;
+	}
+	
 	
 }
