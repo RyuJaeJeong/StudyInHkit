@@ -48,10 +48,6 @@
 	            </td>
 	        </tr>
 	        <tr>
-	            <td  style="align:center;">비밀번호</td>
-	            <td><input type="text" name="passwd" value=""></td>
-	        </tr>
-	        <tr>
 	            <td colspan="2" align="center">
 	            	<button type="button" id="btnChuga">등록하기</button>
 	            	<button type="button" id="btnList">목록으로</button>

@@ -1,6 +1,7 @@
 package controller.board;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.UtilBoard;
 import model.board.dao.BoardDAO;
+import model.board.dto.BoardChkDTO;
 import model.board.dto.BoardDTO;
 import oracle.net.aso.d;
 
@@ -49,11 +51,33 @@ public class BoardController extends HttpServlet {
 		//String ip6 = serverInfo[5];
 		
 		String temp;
+		BoardDTO dto = new BoardDTO();
+		BoardDAO dao = new BoardDAO();
 		
 		temp = request.getParameter("pageNumber");
 		int pageNumber = util.numberCheck(temp, 1);
 		
 		temp = request.getParameter("tbl");
+		int tblCounter = -1; 
+		System.out.println("TBL : " + temp);
+		ArrayList<BoardChkDTO> brr = dao.tblCheck();
+		if(temp == null || temp.trim().equals("")) {
+			temp =  "freeboard";
+		}
+		
+		for (int i = 0; i < brr.size(); i++) {
+			BoardChkDTO chkDTO = brr.get(i);
+			if (temp.equals(chkDTO.getBoardChktbl())) {
+				tblCounter = 0;
+				break;
+			}else {
+				tblCounter++;
+			}
+		}
+		
+		if(tblCounter>0) {
+			temp = "freeboard";
+		}
 		String tbl = util.tblCheck(temp, "freeboard");
 		
 		temp = request.getParameter("no");
@@ -78,8 +102,7 @@ public class BoardController extends HttpServlet {
 		request.setAttribute("search_option", search_option);
 		request.setAttribute("search_data",search_data );
 		
-		BoardDTO dto = new BoardDTO();
-		BoardDAO dao = new BoardDAO();
+		
 		
 		String page = "/main/main.jsp";
 		
@@ -87,7 +110,6 @@ public class BoardController extends HttpServlet {
 			request.setAttribute("menu_gubun", "board_index");
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
-		}else if(url.contains("list.do")) {
 			
 		}else if(url.contains("chuga.do")||url.contains("reply.do")) {
 			
@@ -114,7 +136,7 @@ public class BoardController extends HttpServlet {
 			String passwd = request.getParameter("passwd");
 			String subject = request.getParameter("subject");
 			String content = request.getParameter("content");
-			System.out.println("content" + content);
+			
 			String noticeGubun = request.getParameter("noticeGubun");
 			int noticeNo;
 			if(noticeGubun == null || noticeGubun.trim().equals("")|| !noticeGubun.equals("T")) {
@@ -172,6 +194,7 @@ public class BoardController extends HttpServlet {
 			int result = dao.setInsert(dto);
 			
 		}else if(url.contains("List.do")) {
+			System.out.println(uri);
 			int pageSize = 10;
 			int blockSize = 10;
 			int totalRecord = dao.totalRecord(tbl, search_option, search_data);
@@ -194,7 +217,20 @@ public class BoardController extends HttpServlet {
 					lastPage = totalPage;
 				}
 			};
-			
+			//System.out.println(url);
+//			ArrayList<BoardChkDTO> brr = dao.tblCheck();
+//			BoardChkDTO dto2 = new BoardChkDTO();
+//			for (int i = 0; i < brr.size(); i++) {
+//				System.out.println(brr.size());
+//				dto2 = brr.get(i);
+//				if(tbl.equals(dto2.getBoardChktbl())) {
+//					System.out.println("1");
+//					break;
+//				}else {
+//					tbl = "freeboard";
+//					System.out.println("2");
+//				}
+//			}
 			request.setAttribute("pageNumber", pageNumber);
 			request.setAttribute("pageSize", pageSize);
 			request.setAttribute("blockSize", blockSize);
@@ -205,6 +241,8 @@ public class BoardController extends HttpServlet {
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("lastPage", lastPage);
 			request.setAttribute("jj", jj);
+			
+			
 			
 			 ArrayList<BoardDTO> arr = dao.getListAll(startRecord, lastRecord, tbl, search_option, search_data);
 			 
@@ -301,9 +339,34 @@ public class BoardController extends HttpServlet {
 			
 		}else if(url.contains("sakjeProc.do")) {
 			String passwd = request.getParameter("passwd");
-			dto.setNo(no);
-			dto.setPasswd(passwd);
-			int result = dao.getDelete(dto);
+			dto = dao.getView(no);
+			String dbPass = dto.getPasswd();
+			BoardDTO dto2 = new BoardDTO();
+			dto2.setNo(no);
+			dto2.setPasswd(passwd);
+			
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			if(passwd.equals(dbPass)) {
+				int result = dao.getDelete(dto2);
+				out.println("<script>");
+				out.println("alert('정상적으로 삭제 되었습니다.');");
+				out.println("GoPage('List','');");
+				out.println("</script>");
+				
+			}else {
+				out.println("<script>");
+				out.println("alert('삭제에 실패하였습니다.');");
+				out.println("GoPage('view','" + no + "');");
+				out.println("</script>");
+				return;
+			}
+			out.flush(); // out 객체 초기화.
+			out.close();
+			
+			
+			
+			
 			
 		}
 	}

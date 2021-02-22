@@ -73,10 +73,10 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td colspan="2">
 					<table border="1" width="100%" align="center">
 						<tr>
-							<td colspan="2" height="100px">이전글 : </td>
+							<td width="150" height="100px">이전글 : </td>
 							<td>
 								<c:if test="${dto.preSubject == null}">
 								  	이전글이 없습니다.
@@ -87,7 +87,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2" height="100px">다음글 : </td>
+							<td width="150" height="100px">다음글 : </td>
 							<td>
 								<c:if test="${dto.nxtSubject == null}">
 								  	다음글이 없습니다.
@@ -102,7 +102,7 @@
 		</tr>
 			<tr>
 				<td colspan="2" height="50px" style="padding: 20 0 0 0;">
-					Comment...
+					<%@ include file ="../board_comment/write.jsp" %> 
 				</td>
 			</tr>
 		</table>

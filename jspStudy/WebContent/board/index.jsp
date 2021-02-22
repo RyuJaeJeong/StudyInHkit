@@ -5,7 +5,9 @@
 menu_gubun : ${menu_gubun}<br>
 naljaMap : ${naljaMap}<br>
 ip : ${ip} <br>
-tbl : <span id = "span_tbl">${tbl}</span><br>
+tbl : <span id = "span_tbl">
+	${tbl}
+</span><br>
 pageNumber : <span id = "span_pageNumber">${pageNumber}</span><br>
 no : <span id ="span_no">${no}</span><br>
 search_option : <span id="span_search_option">${search_option}</span><br>
@@ -14,7 +16,7 @@ search_data : <span id="span_search_data">${search_data}</span><br>
 <input type="text" name="a" > <br>
 
 
-<div id="result" style="border: 1px solid black; height: 500px"></div>
+<div id="result" style="border: 1px solid black; height: inherit;"></div>
 
 <script>
 $(document).ready(function(){
@@ -75,14 +77,14 @@ function GoPage(value1, value2) {
 		data: param,
 		url: url,
 		success: function(result) {
-			if(value1 == "chugaProc" || value1 == "sakjeProc" ) {
+			if(value1 == "chugaProc") {
 				suntaek_page('1');
 			} else if(value1 == "List") {
 				$("#result").html(result);
 			} else if (value1 == "sujungProc") {
 				GoPage('view', $("#span_no").text())
 			} else if(value1 == "sakjeProc") {
-				suntaek_page('1');
+				$("#result").html(result);
 			}else {
 				$("#result").html(result);
 			}
@@ -92,8 +94,9 @@ function GoPage(value1, value2) {
 }
 
 function suntaek_page(value1) {
+	alert('성공')
 	$("#span_pageNumber").text(value1);
-	$("span_no").text("");
+	$("#span_no").text("0");
 	GoPage('List','');
 }
 

@@ -6,12 +6,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import db.DbExample;
+import model.board.dto.BoardChkDTO;
 import model.board.dto.BoardDTO;
 
 public class BoardDAO {
 	
 	String tableName01 = "board";
 	String tableName02 = "board_comment";
+	String tableName03 = "boardChk";
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -348,9 +350,15 @@ public class BoardDAO {
 		conn = getConn();
 		int result = 0;
 		try {
-			String sql = "";
-			sql += "delete from " + tableName01 + " where no = ?";
+			String sql ="";
+			sql +=  "delete from " + tableName02 + " where board_no  = ?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getNo());
+			pstmt.executeUpdate();
+			
+			String sql2 = "";
+			sql2 += "delete from " + tableName01 + " where no = ?";
+			pstmt = conn.prepareStatement(sql2);
 			pstmt.setInt(1, dto.getNo());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -360,4 +368,36 @@ public class BoardDAO {
 		}
 		return result;
 	}
+	
+	public ArrayList<BoardChkDTO> tblCheck() {
+		ArrayList<BoardChkDTO> arr = new ArrayList<>();
+		conn = getConn();
+		try {
+			String sql = "";
+			sql += "select * from " + tableName03 + " where serviceGubun = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "T");
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				BoardChkDTO dto = new BoardChkDTO();
+				dto.setNo(rs.getInt("no"));
+				dto.setBoardChktbl(rs.getString("tbl"));
+				dto.setTblName(rs.getString("tblName"));
+				dto.setServiceGubun(rs.getString("serviceGubun"));
+				dto.setWdate(rs.getDate("wdate"));
+				arr.add(dto);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("TBLCHECK FAIL");
+		} finally {
+			getConnClose(rs, pstmt, conn);
+		}
+		return arr;
+		
+	}
+	
+	
+	
 }

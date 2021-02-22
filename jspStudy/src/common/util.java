@@ -164,7 +164,7 @@ public class util {
 	public int[] pager(int pageSize, int blockSize, int totalRecord, int pageNumber) {
 		int[]  result = new int[6];
 		int jj = totalRecord - pageSize * (pageNumber - 1);
-		int startRecord = pageSize * pageNumber;
+		int startRecord = pageSize*(pageNumber-1)+1;
 		int lastRecord = pageSize * pageNumber;
 		if( lastRecord >totalRecord) {
 			lastRecord = totalRecord;
