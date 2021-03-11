@@ -1,0 +1,16 @@
+
+
+--계정생성
+create user jspTest2 identified by 1234; 
+grant connect, resource, dba to jspTest2;
+
+
+
+--테이블 생성
+
+create table board (
+no number not null primary key,
+writer varchar2(500) not null, 
+content clob not null,
+regi_date date default sysdate
+);

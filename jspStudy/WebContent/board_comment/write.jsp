@@ -24,14 +24,14 @@ function GoCommentPage(value1, value2) {
 	
 	if(value1 == "writeProc") {
 		var param={
-				"no" : $("#span_no").text(),
+				"no" : $("#no").val(),
 				"writer" : $("#writer").val(),
 				"passwd" : $("#passwd").val(),
 				"contents" : $("#contents").val()
 		    }
 	}else if(value1 == "list"){
 		var param = {
-				 "no" : $("#span_no").text(),
+				 "no" : $("#no").val(),
 				 "CommentPageNumber" : $("#span_CommentPageNumber").text()	
 			}
 	} 

@@ -108,6 +108,38 @@
 					<jsp:include page="../board/index.jsp"/><br>
 					${menu_gubun}
 				</c:when>
+				<c:when test="${menu_gubun == 'product_index' }">
+					<jsp:include page="../shop/product/index.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'subBoard_list' }">
+					<jsp:include page="../subBoard/list.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'subBoard_chuga' }">
+					<jsp:include page="../subBoard/chuga.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'subBoard_view' }">
+					<jsp:include page="../subBoard/view.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'mall_index' }">
+					<jsp:include page="../shop/mall/index.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'chart_index' }">
+					<jsp:include page="../chart/index.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'chart_googleChartJson' }">
+					<jsp:include page="../chart/googleChartJson.jsp"/><br>
+					${menu_gubun}
+				</c:when>
+				<c:when test="${menu_gubun == 'email_index' }">
+					<jsp:include page="../email/index.jsp"/><br>
+					${menu_gubun}
+				</c:when>
 				<c:otherwise>
 					${menu_gubun}
 				</c:otherwise>

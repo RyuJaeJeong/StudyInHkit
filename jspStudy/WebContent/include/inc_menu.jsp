@@ -24,16 +24,12 @@
 	<tr>
 		
 		   
-	<td colspan="15" style="padding:0px 20px;" id="home">
-		<a href="${path}">Home</a>
-	</td>
-				
-			
-	<td style="padding:0px 20px;" id="member">
-		<a href="${path}/member_servlet/list.do">회원관리</a>
-	</td>
-				
-		
+		<td colspan="15" style="padding:0px 20px;" id="home">
+			<a href="${path}">Home</a>
+		</td>
+		<td style="padding:0px 20px;" id="member">
+			<a href="${path}/member_servlet/list.do">회원관리</a>
+		</td>
 		<td style="padding:0px 20px;">
 			<a href="${path}/memo_servlet/index.do">메모장</a>
 		</td>
@@ -43,22 +39,32 @@
 		<td style="padding:0px 20px;" id="survey">
 			<a href="${path}/survey_servlet/index.do">설문조사</a>
 		</td>
-		<td style="padding:0px 20px;" id="questionBank">
+		<%--<td style="padding:0px 20px;" id="questionBank">
 			<a href="${path}/questionBank_servlet/makeQuestion.do">문제은행</a>
-		</td>
+		</td>--%>
 		<td style="padding:0px 20px;" id="calculator">
 			<a href="${path}/cal_servlet/index.do">계산기</a>
 		</td>
 		<td style="padding:0px 20px;" id="board">
-			<a href="${path}/board_servlet/index.do">게시판</a>
+			<a href="${path}/board_servlet/index.do">게시판(ajax)</a>
+		</td>
+		<td style="padding:0px 20px;" id="board">
+			<a href="${path}/subBoard_servlet/list.do">게시판(s)</a>
 		</td>
 		<td style="padding:0px 20px;">
-			<a href="#">쇼핑몰</a>
+			<a href="${path}/product_servlet/index.do">상품관리</a>
 		</td>
 		<td style="padding:0px 20px;">
-			<a href="#">관리자</a>
+			<a href="${path}/mall_servlet/index.do">쇼핑몰</a>
+		</td>
+		<td style="padding:0px 20px;">
+			<a href="${path}/chart_servlet/index.do">차트</a>
+		</td>
+		<td style="padding:0px 20px;" id="smtpEmail">
+			<a href="${path}/email_servlet/index.do">E-MAIL발송</a>
 		</td>
 	</tr>
+	
 
 
 </table>

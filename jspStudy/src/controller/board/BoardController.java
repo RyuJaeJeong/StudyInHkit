@@ -194,7 +194,6 @@ public class BoardController extends HttpServlet {
 			int result = dao.setInsert(dto);
 			
 		}else if(url.contains("List.do")) {
-			System.out.println(uri);
 			int pageSize = 10;
 			int blockSize = 10;
 			int totalRecord = dao.totalRecord(tbl, search_option, search_data);

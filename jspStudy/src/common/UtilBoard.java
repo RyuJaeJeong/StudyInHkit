@@ -11,7 +11,6 @@ public class UtilBoard extends util {
 	}
 	
 	//overloading
-	
 	public String[] searchCheck(String search_option, String search_data) {
 		String[] result = new String[2];
 		

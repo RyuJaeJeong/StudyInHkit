@@ -1,10 +1,13 @@
 package common;
 
+import java.io.File;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,6 +32,24 @@ public class util {
 		
 		return naljaMap;
 		
+	}
+	
+	public String getDateTimeType() {
+		String result = "";
+		 Map<String, Integer> naljaMap = getDateTime();
+		 String y = naljaMap.get("nowY").toString();
+		 String m = naljaMap.get("nowM").toString();
+		 String d = naljaMap.get("nowD").toString();
+		 String s = naljaMap.get("nowH").toString();
+		 String b = naljaMap.get("nowN").toString();
+		 String c = naljaMap.get("nowS").toString();
+		 if(m.length()<2) { m = "0" + m; }
+		 if(d.length()<2) { d = "0" + d; }
+		 if(s.length()<2) { s = "0" + d; }
+		 if(b.length()<2) { b = "0" + d; }
+		 if(c.length()<2) { c = "0" + d; }
+		 result = y + m + d + s + b + c;
+		 return result;
 	}
 	
 	public int numberCheck(String str, int defaultNumber) {
@@ -64,6 +85,7 @@ public class util {
 	}
 	
 	public String[] getServerInfo(HttpServletRequest request) throws UnknownHostException {
+		
 		String[] result = new String[6];
 		String referer = request.getHeader("REFERER");
 		if(referer == null || referer.trim().equals("") ) {
@@ -202,5 +224,50 @@ public class util {
 		return result;
 	}
 	
+	public String create_uuid() {
+		return UUID.randomUUID().toString(); 
+	}
+	
+	public void fileDelete(HttpServletRequest request, String dir) {
+		if(dir.trim().equals("")) {
+			return;
+		}
+		
+		//calendar 객체 생성
+		
+		Calendar cal = Calendar.getInstance();
+		long todayMil = cal.getTimeInMillis();
+		long oneDayMil = 24*60*60*1000;
+		
+		Calendar fileCal = Calendar.getInstance();
+		Date fileDate = null;
+		
+		File path = new File(dir);
+		File[] list = path.listFiles(); //파일 리스트 가져오기
+		
+		for (int i = 0; i < list.length; i++) {
+			//파일의 마지막 수정시간 가져오기
+			fileDate = new Date(list[i].lastModified());
+			fileCal.setTime(fileDate);
+			long diffMil = todayMil - fileCal.getTimeInMillis();
+			System.out.println("difMil:" + diffMil);
+			
+			//날짜로 계산
+			int diffDay = (int)(diffMil/oneDayMil);
+			
+			//3일이 지난 파일 삭제
+			if(diffDay > 3 && list[i].exists()) {
+				list[i].delete();
+				System.out.println(list[i].getName() + " 파일을 삭제 했습니다.");
+			}
+			
+			if(diffMil > 0 && list[i].exists()) {
+				list[i].delete();
+				System.out.println(list[i].getName() + " 파일을 삭제 했습니다.");
+			}
+		}
+	
+		
+	}
 	
 }
