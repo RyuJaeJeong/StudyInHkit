@@ -120,7 +120,7 @@
 			<button type="button" onclick="suntaek_proc('buy','','${dto.no}')">바로구매</button>
 			<button type="button" onclick="suntaek_proc('cart_list', '1', '')">장바구니</button>
 			<button type="button" onclick="suntaek_proc('mall_list', '1', '')">쇼핑하기</button>
-			<button type="button" onclick="suntaek_proc('cart_clear', '1', '')">쇼핑하기</button>
+			<button type="button" onclick="suntaek_proc('cart_clear', '1', '')">장바구니 비우기</button>
 		</td>
 	</tr>
 </table>

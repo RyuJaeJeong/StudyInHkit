@@ -114,8 +114,7 @@ function GoPage(value1) {
 					suntaek_proc('view', '', $("#span_no").text())
 				} else {
 					$("#result").html(data);
-				}
-				
+				}				
 			
 				
 		}
