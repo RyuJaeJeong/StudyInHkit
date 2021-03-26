@@ -36,19 +36,13 @@
 			<a href="${path}/memo_servlet/index.do">메모장</a>
 		</td>
 		<td style="padding:0px 20px;" id="survey">
-			<a href="${path}/survey_servlet/index.do">설문조사</a>
+			<a href="${path}/survey_servlet/index.do">설문관리</a>
 		</td>
-		<%--<td style="padding:0px 20px;" id="questionBank">
-			<a href="${path}/questionBank_servlet/makeQuestion.do">문제은행</a>
-		</td>--%>
-		<td style="padding:0px 20px;" id="calculator">
-			<a href="${path}/cal_servlet/index.do">계산기</a>
+		<td style="padding:0px 20px;" id="questionBank">
+			<a href="${path}/survey2_servlet/index.do">설문조사</a>
 		</td>
 		<td style="padding:0px 20px;" id="board">
 			<a href="${path}/board_servlet/index.do">게시판(ajax)</a>
-		</td>
-		<td style="padding:0px 20px;" id="board">
-			<a href="${path}/subBoard_servlet/list.do">게시판(s)</a>
 		</td>
 		<td style="padding:0px 20px;">
 			<a href="${path}/product_servlet/index.do">상품관리</a>

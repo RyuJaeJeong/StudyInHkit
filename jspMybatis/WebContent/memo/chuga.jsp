@@ -25,15 +25,14 @@
 				<tr>
 					<td colspan="2" align="center">
 					
-					<c:choose>
-						<c:when test="${dto.id>0}">
-							<button type="button" id="btnModify">수정하기</button>
-						</c:when>
-						<c:otherwise>
-							<button type="button" id="btnSave">추가하기</button>
-						</c:otherwise>
 					
-					</c:choose>
+							<button type="button" id="btnModify" >수정하기</button>
+						
+						
+							<button type="button" id="btnSave">추가하기</button>
+						
+					
+					
 					
 					
 					
@@ -60,6 +59,9 @@
 				suntaek_proc('sujungProc', '', '${dto.id}');
 			}
 		});
+		
+		$("#btnModify").css("display","none");
+		$("#btnSave").css("display","");
 		
 	});
 	

@@ -5,9 +5,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import common.util;
+import common.Util;
 
-public class MemberUtil extends util {
+
+
+public class MemberUtil extends Util {
 
 	@Override
 	public Map getDateTime() {

@@ -4,9 +4,9 @@
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 
- <span style="display:none;" id="span_proc"></span>	<br />
+<span style="display:none;" id="span_proc"></span>	<br />
 <span style="display:none;" id="span_pageNumber">${span_pageNumber}</span>  <br />
-<span style="display:none;" id="span_no">${no}</span>
+span_no : <span style="display:;" id="span_no">${dto.id}</span>
 
 <div id="chuga"></div>
 <div id="list"></div>

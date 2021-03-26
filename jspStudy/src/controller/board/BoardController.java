@@ -59,7 +59,7 @@ public class BoardController extends HttpServlet {
 		
 		temp = request.getParameter("tbl");
 		int tblCounter = -1; 
-		System.out.println("TBL : " + temp);
+		
 		ArrayList<BoardChkDTO> brr = dao.tblCheck();
 		if(temp == null || temp.trim().equals("")) {
 			temp =  "freeboard";

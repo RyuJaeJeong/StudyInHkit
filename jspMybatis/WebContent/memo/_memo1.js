@@ -2,6 +2,7 @@ $(document).ready(function(){
 	//alert('111');
 	suntaek_proc('chuga','','');
 	suntaek_proc('list','','');
+	
 });
 
 
@@ -93,10 +94,15 @@ function GoPage(value1) {
 			}else if(value1 == "delete") {
 				suntaek_proc('list','','');
 			}else if(value1 == "sujung") {
+				$("#btnSave").css("display","none");
+				$("#btnModify").css("display","");
 				$("#chuga").html(data);
 			}else if(value1 == "sujungProc") {
 				$("#name").val("");
 				$("#content").val("");
+				$("#span_no").text("");
+				$("#btnModify").css("display","none");
+				$("#btnSave").css("display","");
 				suntaek_proc('list','','');
 			}
 		}

@@ -26,6 +26,7 @@
 	</c:if>
 	
 	<c:forEach var="dto" items="${arr}">
+		
 		<tr>
 			<td><input type="checkbox" name="chk" id="chk" value="${dto.id}"></td>
 			<td>${jj}</td>

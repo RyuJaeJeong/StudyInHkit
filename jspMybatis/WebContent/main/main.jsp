@@ -72,6 +72,18 @@
 						<jsp:include page="../memo/index.jsp"/><br>
 						${menu_gubun}
 					</c:when>
+					<c:when test="${menu_gubun == 'survey_index' }">
+						<jsp:include page="../survey/index.jsp"/><br>
+						${menu_gubun}
+					</c:when>
+					<c:when test="${menu_gubun == 'survey2_index' }">
+						<jsp:include page="../survey2/index.jsp"/><br>
+						${menu_gubun}
+					</c:when>
+					<c:when test="${menu_gubun == 'board_index' }">
+						<jsp:include page="../board/index.jsp"/><br>
+						${menu_gubun}
+					</c:when>
 					<c:otherwise>
 						${menu_gubun}
 					</c:otherwise>

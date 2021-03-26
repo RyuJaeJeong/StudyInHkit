@@ -6,7 +6,7 @@
 
 <form name="DirForm">
 
-	    <table align="center" border="1">
+	    <table align="center" border="1" style="width:1000px">
 	      	<tr>
 	      		<td colspan="2"> <h2>게시글 쓰기</h2> </td>
 	      	<tr>

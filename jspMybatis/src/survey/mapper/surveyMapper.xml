@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="survey">
+	
+	
+	
+	
+	
+
+	<insert id="setInsert">
+		insert into ${tableName1} (no,question,ans1,ans2,ans3,ans4, status, start_date, last_date, regi_date) 
+		values (seq_surveyTable.NEXTVAL,#{dto.question},#{dto.ans1},#{dto.ans2},#{dto.ans3},#{dto.ans4},#{dto.status},#{dto.start_date},#{dto.last_date},CURRENT_TIMESTAMP)
+	</insert>
+
+	<select id="getTotalRecord" resultType="int">
+		select count(*) from ${tableName1} where 1=1
+		<if test="list_gubun == 'all'">
+		
+		</if>
+		<if test="list_gubun == 'ing'">
+			<![CDATA[	
+				and (start_date < CURRENT_TIMESTAMP and last_date > CURRENT_TIMESTAMP) and status = 1
+			]]>	
+		</if>
+		<if test="list_gubun == 'end'">
+			<![CDATA[	
+				and last_date < CURRENT_TIMESTAMP or status = 0
+			]]>	
+		</if>
+		<if test="search_option != null and search_option != '' and search_data != null and search_data != '' ">
+			and (${search_option} like '%' ||  #{search_data} || '%' )
+		</if>
+		<if test="search_date_check != null and search_date_check != ''">
+			<![CDATA[	
+					and (start_date >= to_timestamp(#{search_data_s}) and last_date <= to_timestamp(#{search_data_e}))
+			]]>	
+		</if>
+		
+	</select>
+	
+	<select id="getListAll" resultType = "survey.model.dto.SurveyDTO">
+		select * from (select A.*, Rownum Rnum from (
+		
+		select * from ${tableName1} where 1=1
+		
+		<if test="list_gubun == 'ing'">
+			<![CDATA[	
+				and (start_date < CURRENT_TIMESTAMP and last_date > CURRENT_TIMESTAMP) and status = 1
+			]]>	
+		</if>
+		<if test="list_gubun == 'end'">
+			<![CDATA[	
+				and last_date < CURRENT_TIMESTAMP or status = 0
+			]]>	
+		</if>
+		<if test="search_option != null and search_option != '' and search_data != null and search_data != '' ">
+			and (${search_option} like '%' ||  #{search_data} || '%' )
+		</if>
+		<if test="search_date_check != null and search_date_check != ''">
+			<![CDATA[	
+					and (start_date >= to_timestamp(#{search_data_s}) and last_date <= to_timestamp(#{search_data_e}))
+			]]>	
+		</if>
+		
+<![CDATA[		
+		)A) where Rnum >= #{startRecord} and Rnum <= #{lastRecord}
+]]>	
+	</select>
+	
+	<update id="setUpdate" >
+		update survey_table set question=#{dto.question}, ans1=#{dto.ans1}, ans2=#{dto.ans2}, ans3=#{dto.ans3}, ans4=#{dto.ans4},  status=#{dto.status}, start_date=#{dto.start_date}, last_date=#{dto.last_date} where no=#{dto.no}
+	</update>
+	
+	<delete id="getDelete">
+		delete from survey_table where no = #{no}
+	</delete>
+	
+	<select id="getView" resultType="survey.model.dto.SurveyDTO">
+		select*from survey_table where no=#{no}
+	</select>
+
+
+</mapper>

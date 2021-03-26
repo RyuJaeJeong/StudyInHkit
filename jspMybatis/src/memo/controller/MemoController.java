@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import common.util;
+import common.Util;
 import memo.model.dao.MemoDAO;
 import memo.model.dto.MemoDTO;
 
@@ -45,7 +45,7 @@ public class MemoController extends HttpServlet {
 		MemoDTO dto = new MemoDTO();
 		MemoDAO dao = new MemoDAO();
 		
-		util util = new util();
+		Util util = new Util();
 		String temp;
 		temp = request.getParameter("pageNumber");
 		int pageNumber = util.numberCheck(temp, 1);
@@ -75,24 +75,18 @@ public class MemoController extends HttpServlet {
 				out.println("</script>");
 			}
 		}else if(url.contains("list.do")) {
-			int pageSize = 10;	//화면에 보여질 게시물 갯수
-			int blockSize = 10; //화면에 보여질 페이지 넘버 갯수
+			int pageSize = 10; //한 페이지에 보여질 게시물 갯수.
+			int blockSize = 10; //한 페이지에 보여질 페이지 블록 갯수.
 			int totalRecord = dao.getTotalRecord();
-			int jj = totalRecord - pageSize*(pageNumber-1);
-			int startRecord = pageSize*(pageNumber-1)+1; //페이지에 표시되는 시작 개시물 
-			int lastRecord = pageSize*pageNumber; //패이지에 표시되는 마지막 개시물
 			
-			int totalPage = 0;
-			int startPage = 1;
-			int lastPage = 1;
-			if(totalRecord>0) {
-				totalPage = totalRecord/pageSize+(totalRecord%pageSize == 0 ? 0:1);
-				startPage = (pageNumber/blockSize - (pageNumber%blockSize !=0 ? 0:1))*blockSize + 1;
-				lastPage = startPage + blockSize - 1;
-				if(lastPage>totalPage) {
-					lastPage = totalPage;
-				}
-			}
+			int[] pager = util.pager(pageSize, blockSize, totalRecord, pageNumber);
+			
+			int jj = pager[0];
+			int startRecord = pager[1];
+			int lastRecord = pager[2];
+			int totalPage = pager[3];
+			int startPage = pager[4];
+			int lastPage = pager[5];
 			
 			request.setAttribute("pageNumber", pageNumber);
 			request.setAttribute("pageSize", pageSize);
@@ -133,6 +127,11 @@ public class MemoController extends HttpServlet {
 			dto.setContent(content);
 			dto.setId(id);
 			int result = dao.getUpdate(dto);
+			
+			request.setAttribute("dto", dto);
+			page = "/memo/chuga.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
 			
 		}
 	

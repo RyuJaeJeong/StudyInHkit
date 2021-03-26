@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "../include/inc_header.jsp"%>
-    span_list_size : <span id="span_list_size">${list.size() }</span><br>
+    span_list_size : <span id="span_list_size">${list.size()}</span><br>
     span_answer_total : <span id="span_answer_total"></span><br>
    <c:forEach var="dto" items="${list}" varStatus="status">
    		<c:set var="answer" value="answer${status.index}"></c:set>	
-   		
    		span_answer_${status.index}: <span  id="span_answer_${status.index}"></span><br>
    		span_no_${status.index}: <span  id="span_no_${status.index}">${dto.no }</span><br>
    		<table border="1" style="width:500px;">

@@ -1,7 +1,8 @@
-package common;
+package board.util;
 
-public class UtilBoard extends util {
-	
+import common.Util;
+
+public class UtilBoard extends Util {
 	public String tblCheck(String tbl, String defaultTbl) {
 		if(tbl == null || tbl.trim().equals("")) {
 			tbl = defaultTbl;

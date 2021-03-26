@@ -74,9 +74,8 @@ public class SurveyController extends HttpServlet {
 		String search_data = request.getParameter("search_data");
 		String search_data_s =  request.getParameter("search_data_s");
 		String search_data_e =  request.getParameter("search_data_e");
-		System.out.println(search_data_s+"/"+search_data_e);
 		String search_date_check = request.getParameter("search_date_check");
-		System.out.println("search_date_check : " + search_date_check);
+		
 		
 		String [] searchArray = util.searchCheck(search_option, search_data, search_data_s, search_data_e, search_date_check);
 		
@@ -94,6 +93,7 @@ public class SurveyController extends HttpServlet {
 		request.setAttribute("search_data_s", search_data_s);
 		request.setAttribute("search_data_e", search_data_e);
 		request.setAttribute("search_date_check", search_date_check);
+		
 		if (url.contains("index.do")) {
 			request.setAttribute("menu_gubun", "survey_index");
 			RequestDispatcher rd = request.getRequestDispatcher(page);
@@ -105,6 +105,7 @@ public class SurveyController extends HttpServlet {
 			rd.forward(request, response);
 			
 		}else if(url.contains("chugaProc.do")) {
+			System.out.println("추가proc진입");
 			String question = request.getParameter("question");
 			String ans1 = request.getParameter("ans1");
 			String ans2 = request.getParameter("ans2");
@@ -120,6 +121,9 @@ public class SurveyController extends HttpServlet {
 			String LMonth = request.getParameter("lMonth");
 			String LDay = request.getParameter("lDay");
 			
+			System.out.println(sYear + "/" + sMonth + "/" + sDay );
+			
+			
 			String start_date_ = "";
 			start_date_ += sYear+"-"+sMonth+"-"+sDay;
 			start_date_ += " 00:00:00.0";
@@ -132,6 +136,7 @@ public class SurveyController extends HttpServlet {
 			
 			java.sql.Timestamp last_date = java.sql.Timestamp.valueOf(last_date_);
 			//문자열로 저장하는 방법, timestamp 로 변환하여 저장하는 방법. 
+			
 			
 			
 			dto.setQuestion(question);

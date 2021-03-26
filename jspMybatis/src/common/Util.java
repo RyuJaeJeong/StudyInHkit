@@ -12,7 +12,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class util {
+public class Util {
 	public Map getDateTime() {
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
