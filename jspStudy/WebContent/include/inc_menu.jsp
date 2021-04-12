@@ -6,7 +6,7 @@
 	<tr>
 		<td colspan="100" align="right">
 		 <c:if test="${sessionScope.cookNo == null ||sessionScope.cookNo == 0}">
-    	<a href="${path}/member_servlet/login.do">로그인</a>
+    			<a href="${path}/member_servlet/login.do">로그인</a>
    		 </c:if>
    		 
    		 <c:if test="${sessionScope.cookNo != null && sessionScope.cookNo != 0}">

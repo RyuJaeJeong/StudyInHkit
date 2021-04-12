@@ -148,7 +148,8 @@ public class MemberController extends HttpServlet {
 			System.out.println("가입성공");
 				
 		}else if (url.contains("login.do")) {
-				page = "/member/login.jsp";
+			    request.setAttribute("menu_gubun", "member_login");
+				
 				RequestDispatcher rd = request.getRequestDispatcher(page);
 				rd.forward(request, response);
 		}else if (url.contains("loginProc.do")) {
@@ -168,11 +169,11 @@ public class MemberController extends HttpServlet {
 					session.setAttribute("cookNo", resultdto.getNo());
 					session.setAttribute("cookId", resultdto.getId());
 					session.setAttribute("cookName", resultdto.getName());
-					temp = path;
+					//temp = path;
 				} catch (Exception e) {
-					temp = path + "/member_servlet/login.do";
+					//temp = path + "/member_servlet/login.do";
 				}
-				response.sendRedirect(temp);
+				//response.sendRedirect(temp);
 			
 		}else if (url.contains("logout.do")) {
 				
@@ -321,7 +322,6 @@ public class MemberController extends HttpServlet {
 			String id = request.getParameter("id");
 			
 			int result = dao.idCheck(id);
-			System.out.println(result);
 			request.setAttribute("id", id);
 			request.setAttribute("result", result);
 			temp ="/member/id_check.jsp";

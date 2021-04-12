@@ -27,5 +27,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="survey/mapper/surveyMapper.xml" />
 		<mapper resource="survey2/mapper/surveyMapper.xml" />
 		<mapper resource="board/mapper/boardMapper.xml" />
+		<mapper resource="shop/mapper/productMapper.xml"  />
+		<mapper resource="mall/mapper/mallMapper.xml"  />
 	</mappers>
 </configuration>

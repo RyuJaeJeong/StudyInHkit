@@ -24,7 +24,6 @@ function suntaek_proc(value1, value2, value3) {
 
 
 function GoPage(value1) {
-	
 	var param;	
 	var url = "${path}/member_servlet/" + value1 + ".do";
 	
@@ -101,7 +100,8 @@ function GoPage(value1) {
 			}else if(value1 == "login") {
 				$("#result").html(data);
 			}else if(value1 == "loginProc") {
-				$("#result").html(data);
+				alert('로그인 성공');
+				location.href="./index.do";
 			}else if(value1 == "logout") {
 				alert('로그아웃되었습니다.'); 
 				location.href='./index.do';	

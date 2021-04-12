@@ -104,7 +104,6 @@ public class ChartController extends HttpServlet {
  	    	page = "/chart/myChart.jsp";
  	    	RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
-			System.out.println("11");
 		}
 		
 	}

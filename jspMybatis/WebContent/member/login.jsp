@@ -30,8 +30,7 @@
 </html>
 
 
-<script>
-
+<script type="text/javascript" src="${path}/member/_member.js">
 
 function join() {
 	if(confirm('회원가입 하시겠습니까')) {
@@ -45,4 +44,7 @@ $('form input').keydown(function(e) {
     	suntaek_proc('loginProc', '', '');
     }
 });			//엔터키 입력시 로그인.
+
 </script>
+
+

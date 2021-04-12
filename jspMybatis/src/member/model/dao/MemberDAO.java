@@ -99,13 +99,7 @@ public class MemberDAO {
 		something = something.replace("&", "&amp;");
 		something = something.replace("\"", "&quot;");
 		something = something.replace("'", "&apos;");
-		
-		
-		
 		return something;
-		
-		
-		
 	}
 	
 	

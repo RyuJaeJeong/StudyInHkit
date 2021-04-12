@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	<sql id="search">
+		<choose>
+			<when test="search_option == 'id_name_gender' ">
+				and (id like '%' || #{search_data} || '%' or name like '%'
+				|| #{search_data} || '%' or gender like '%'
+				|| #{search_data} || '%')
+			</when>
+			<when test="search_option != null and search_option != '' and search_data != null and search_data != '' ">
+					and (${search_option} like '%' ||  #{search_data} || '%' )
+			</when>
+			<otherwise>
+				and no > '0'
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<select id="getTotalRecord" resultType="int">
+		select count(*) from ${tableName01} where 1=1
+		<include refid="search"></include>
+	</select>
+	
+	<select id="getListAll" resultType = "com.test.springStudy.member.model.dto.MemberDTO">
+		select * from (select A.*, Rownum Rnum from (
+		
+		select *from member where 1=1
+		
+		<include refid="search"></include>
+		
+		order by no desc
+<![CDATA[		
+		)A) where Rnum >= #{startRecord} and Rnum <= #{lastRecord}
+]]>	
+	</select>
+	
+	<select id="idCheck" resultType="int">
+			select count(*) from member where id=#{id}
+	</select>
+	
+	<insert id="setInsert">
+			<selectKey keyProperty="no" resultType="int" order="BEFORE" >
+				select seq_member.nextval from dual
+			</selectKey>
+		insert into member (no, id, passwd, name, gender, bornYear, regidate, postcode, address, detailAddress, extraAddress) 
+		values (#{no}, #{dto.id},#{dto.passwd},#{dto.name},#{dto.gender},#{dto.bornYear},CURRENT_TIMESTAMP,#{dto.postcode},#{dto.address},#{dto.detailAddress},#{dto.extraAddress}) 
+	</insert>
+	
+	<update id="getUpdate" >
+		update member set passwd=#{dto.passwd},gender=#{dto.gender},bornYear=#{dto.bornYear},postcode=#{dto.postcode},address=#{dto.address},
+		detailaddress=#{dto.detailAddress},extraaddress=#{dto.extraAddress}  where no = #{dto.no}
+	</update>
+	
+	<delete id="getDelete">
+		delete from member where no = #{no}
+	</delete>
+	
+	<select id="getView" resultType="com.test.springStudy.member.model.dto.MemberDTO">
+      select * from 
+      (
+         select t1.*, 
+         LAG(no) OVER (ORDER BY no desc) preNo, 
+         LAG(id) OVER (ORDER BY no desc) preId, 
+         LEAD(no) OVER (ORDER BY no desc) nxtNo, 
+         LEAD(id) OVER (ORDER BY no desc) nxtId 
+         from member t1 
+         where 1=1 
+         <include refid="search"></include>
+         order by no desc
+      ) where no = #{no}    
+   </select>
+
+	<select id="getLogin" resultType="com.test.springStudy.member.model.dto.MemberDTO">
+		select no, id, name from member where id=#{dto.id} and passwd=#{dto.passwd}
+	</select> 
+	
+	
+</mapper>

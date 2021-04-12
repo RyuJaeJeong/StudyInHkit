@@ -21,8 +21,8 @@
         console.log(jsonData);    	
         var data = new google.visualization.DataTable(jsonData);	
     	var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-    	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-    	var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+    	//var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    	//var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
         
     	chart.draw(data, {
     		title : "차트 예제",
